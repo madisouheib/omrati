@@ -1,0 +1,34 @@
+9999999999s:1011:"font-family: 'IBM Plex Sans Arabic', sans-serif;
+.bravo_wrap .bravo_header .content .header-left .bravo-menu ul li:hover>.fa,.bravo_wrap .bravo_header .content .header-left .bravo-menu ul li:hover>a {
+    color: #027700;
+}
+.bravo_wrap .bravo_header .content .header-left .bravo-menu ul li a {
+    color: #191b19;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 25px 20px;
+    text-transform: uppercase;
+    transition: all .3s
+}
+.tabtext{
+    margin-right: 1.2rem;
+}
+.bravo_wrap #header.u-header--static-xl .bravo_topbar .text-white {
+    color: white!important
+}
+.bravo_wrap #header.u-header--static-xl .bravo_topbar .dropdown-nav-link {
+    color:white;
+}
+
+.bravo_wrap #header.u-header--static-xl .bravo_topbar.u-header__topbar [class*=u-header__topbar-divider]:not(.list-inline):before {
+    background-color: white;
+    opacity: .149
+}
+
+.bravo_wrap .bravo_topbar .list-inline-dark a {
+    color: white;
+}
+.socials .fa {
+    color: white;
+}";
