@@ -1,7 +1,7 @@
 <div class="bravo_filter navbar-expand-lg navbar-expand-lg-collapse-block">
     <button class="btn d-lg-none mb-5 p-0 collapsed" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-caret-square-o-down text-primary font-size-20 card-btn-arrow ml-0 font-weight-normal"></i>
-        <span class="text-primary ml-2"><?php echo e(__('Filter Search')); ?></span>
+        <span class="text-primary ml-2"><?php echo e(__('تصفية البحث')); ?></span>
     </button>
     <div id="sidebar" class="navbar-expand-lg navbar-expand-lg-collapse-block collapse">
         
@@ -42,7 +42,7 @@
                                 <button type="button" class="btn btn-link btn-block card-btn py-2  text-lh-3 collapsed" data-toggle="collapse" data-target="#context-filter-price" aria-expanded="false" aria-controls="context-filter-price">
                                     <span class="row align-items-center">
                                         <span class="col-9">
-                                            <span class="d-block font-size-lg-15 font-size-17 font-weight-bold text-dark"><?php echo e(__("Price Range")); ?> (<?php echo e($currency['symbol'] ?? ''); ?>)</span>
+                                            <span class="d-block font-size-lg-15 font-size-17 font-weight-bold text-dark"><?php echo e(__("نطاق السعر")); ?> (<?php echo e($currency['symbol'] ?? ''); ?>)</span>
                                         </span>
                                         <span class="col-3 text-right">
                                             <span class="card-btn-arrow">
@@ -85,7 +85,7 @@
                                 <button type="button" class="btn btn-link btn-block card-btn py-2  text-lh-3 collapsed" data-toggle="collapse" data-target="#review_score">
                                     <span class="row align-items-center">
                                         <span class="col-9">
-                                            <span class="d-block font-size-lg-15 font-size-17 font-weight-bold text-dark text-lh-1dot4"><?php echo e(__("Review Score")); ?></span>
+                                            <span class="d-block font-size-lg-15 font-size-17 font-weight-bold text-dark text-lh-1dot4"><?php echo e(__("معدل التقييم")); ?></span>
                                         </span>
                                         <span class="col-3 text-right">
                                             <span class="card-btn-arrow">
@@ -174,8 +174,8 @@
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </div>
                                         <a class="link link-collapse small font-size-1 mt-2" data-toggle="collapse" href="#more_term_<?php echo e($item->id); ?>" role="button" aria-expanded="false" aria-controls="more_term_<?php echo e($item->id); ?>">
-                                            <span class="link-collapse__default font-size-14"><?php echo e(__("Show all")); ?></span>
-                                            <span class="link-collapse__active font-size-14"><?php echo e(__("Show less")); ?></span>
+                                            <span class="link-collapse__default font-size-14"><?php echo e(__("عرض الكل")); ?></span>
+                                            <span class="link-collapse__active font-size-14"><?php echo e(__("عرض أقل")); ?></span>
                                         </a>
                                     </div>
                                 </div>

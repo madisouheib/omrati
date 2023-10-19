@@ -7,10 +7,10 @@
             <div class="d-flex justify-content-between align-items-center mb-4 topbar-search">
                 <h3 class="font-size-21 font-weight-bold mb-0 text-lh-1">
                     <?php if($rows->total() > 1): ?>
-                        <?php echo e(__(":count tours found",['count'=>$rows->total()])); ?>
+                        <?php echo e(__(":count جولات وجدت",['count'=>$rows->total()])); ?>
 
                     <?php else: ?>
-                        <?php echo e(__(":count tour found",['count'=>$rows->total()])); ?>
+                        <?php echo e(__(":count جولة وجدت",['count'=>$rows->total()])); ?>
 
                     <?php endif; ?>
                 </h3>
@@ -28,14 +28,14 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <?php else: ?>
                         <div class="col-lg-12">
-                            <?php echo e(__("Tour not found")); ?>
+                            <?php echo e(__("لم يتم العثور على جولة")); ?>
 
                         </div>
                     <?php endif; ?>
                 </div>
             </div>
             <?php if($rows->total() > 0): ?>
-                <div class="text-center text-md-left font-size-14 mb-3 text-lh-1"><?php echo e(__("Showing :from - :to of :total Tours",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()])); ?></div>
+                <div class="text-center text-md-left font-size-14 mb-3 text-lh-1"><?php echo e(__("عرض :from - :to من :total جولات",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()])); ?></div>
             <?php endif; ?>
             <?php echo e($rows->appends(request()->query())->links()); ?>
 
