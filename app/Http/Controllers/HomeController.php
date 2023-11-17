@@ -91,4 +91,13 @@ class HomeController extends Controller
             return $this->sendError( $e->getMessage() );
         }
     }
+
+    public function indexWizard(){
+
+
+        
+
+        return view('home_wizard');
+
+    }
 }
