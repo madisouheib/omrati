@@ -1,7 +1,8 @@
 <div class="sidebar border border-color-1 rounded-xs">
     <div class="p-4 mb-1">
         <form action="{{ route('tour.search') }}" class="bravo_form" method="get">
-            @php$tour_search_fields = setting_item_array('tour_search_fields');
+            @php
+                $tour_search_fields = setting_item_array('tour_search_fields');
                 $tour_search_fields = array_values(
                     \Illuminate\Support\Arr::sort($tour_search_fields, function ($value) {
                         return $value['position'] ?? 0;

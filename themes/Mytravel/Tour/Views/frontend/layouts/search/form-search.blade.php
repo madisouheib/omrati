@@ -1,7 +1,9 @@
 <form action="{{ route('tour.search') }}" class="form bravo_form d-flex mb-1 py-2" method="get">
     <div class="g-field-search">
         <div class="row d-block nav-select d-flex align-items-end">
-            @php$tour_search_fields = setting_item_array('tour_search_fields');
+            @php
+
+                $tour_search_fields = setting_item_array('tour_search_fields');
                 $tour_search_fields = array_values(
                     \Illuminate\Support\Arr::sort($tour_search_fields, function ($value) {
                         return $value['position'] ?? 0;
