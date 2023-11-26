@@ -23,9 +23,9 @@
 
 
 
-                    <button class="btn btn-success enquiry-item" style="margin-right : 40%;" data-toggle="modal"
+                    <button class="btn btn-success enquiry-item mt-2" style="margin-right : 30%;" data-toggle="modal"
                         data-target="#enquiry_form_modal">
-                        <span>{{ __('استفسار') }} {{ __('حجز') }} </span>
+                        <span> {{ __('حجز') }} {{ __('استفسار') }} </span>
                     </button>
                 </div>
                 <div class="form-book" :class="{ 'd-none': enquiry_type != 'book' }">
