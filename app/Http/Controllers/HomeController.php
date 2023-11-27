@@ -8,6 +8,7 @@ use Modules\Page\Models\Page;
 use Modules\News\Models\NewsCategory;
 use Modules\News\Models\Tag;
 use Modules\News\Models\News;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 class HomeController extends Controller
@@ -32,6 +33,7 @@ class HomeController extends Controller
         $home_page_id = setting_item('home_page_id');
         if($home_page_id && $page = Page::where("id",$home_page_id)->where("status","publish")->first())
         {
+         
             $this->setActiveMenu($page);
             $translation = $page->translate();
             $seo_meta = $page->getSeoMetaWithTranslation(app()->getLocale(), $translation);
@@ -99,5 +101,31 @@ class HomeController extends Controller
 
         return view('home_wizard');
 
+    }
+
+    public function getHotelsMadina(){
+
+        $data = Hotel::select('bravo_hotels.*','media_files.file_path')
+        ->leftJoin('media_files','media_files.id','=','bravo_hotels.image_id')
+        ->get();
+
+
+
+return response()->json($data);
+
+
+
+    }
+
+    public function getHotelsMekkah(){
+
+        $data = Hotel::select('bravo_hotels.*','media_files.file_path')
+        ->leftJoin('media_files','media_files.id','=','bravo_hotels.image_id')
+        ->get();
+        
+        
+        
+        return response()->json($data);
+        
     }
 }

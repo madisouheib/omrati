@@ -467,6 +467,9 @@
                                 <section id="personal-umrah" style="display: none;">
                                     <h3> معلومات العمرة </h3>
                                     <form>
+                                        <img id="imageDisplay"
+                                            style="display: block; margin-left:auto;margin-right:auto;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
+                                            src="" alt="Selected Image">
                                         <div class="row p4">
 
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
@@ -483,10 +486,9 @@
                                                     <label style="font-weight: bold;"> فندق مكة</label>
 
 
-                                                    <select class="form-control">
+                                                    <select class="form-control" onchange="updateImageDataMekkah()"
+                                                        id="mySelectMekkah">
 
-                                                        <option>فندق إعمار إيليت </option>
-                                                        <option> فندق إعمار إيليت </option>
                                                     </select>
                                                     <i class="fas fa-hotel ms-3"></i>
                                                 </div>
@@ -502,8 +504,11 @@
 
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
-                                                    <label style="font-weight: bold;"> فندق مدينة المنورة </label>
-                                                    <select class="form-control">
+                                                    <label style="font-weight: bold;">
+                                                        فندق مدينة المنورة
+                                                    </label>
+                                                    <select class="form-control" id="mySelectMadina"
+                                                        onchange="updateImageDataMadina()">
 
                                                         <option>فندق إعمار إيليت </option>
                                                         <option> فندق إعمار إيليت </option>
@@ -786,6 +791,104 @@
 
             }
         </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Function to fetch data from the API
+                const baseUrl = window.location.origin;
+
+                function fetchDataMadina() {
+                    fetch('/api/getmekkahhotels') // Replace with your API endpoint
+                        .then(response => response.json())
+                        .then(data => populateSelect(data))
+                        .catch(error => console.error('Error fetching data:', error));
+                }
+
+                function fetchDataMekkah() {
+                    fetch('/api/getmadinahotels') // Replace with your API endpoint
+                        .then(response => response.json())
+                        .then(data => populateSelectMadina(data))
+                        .catch(error => console.error('Error fetching data:', error));
+                }
+
+                // Function to populate the select element with data
+                function populateSelect(data) {
+                    const selectElement = document.getElementById('mySelectMekkah');
+
+                    // Clear existing options
+                    selectElement.innerHTML = '';
+
+                    // Add a default option
+                    const defaultOption = document.createElement('option');
+                    defaultOption.text = 'فندق مدينة مكة ';
+                    selectElement.add(defaultOption);
+
+                    // Add options from the fetched data
+                    data.forEach(item => {
+                        const option = document.createElement('option');
+                        option.value = item.id; // Use a unique identifier from your data
+                        option.text = item.title; // Use a property from your data
+                        option.setAttribute('data-image', baseUrl + '/uploads/' + item
+                            .file_path); // Assuming there is an imagePath property
+
+                        selectElement.add(option);
+                    });
+                }
+
+                function populateSelectMadina(data) {
+                    const selectElement = document.getElementById('mySelectMadina');
+
+                    // Clear existing options
+                    selectElement.innerHTML = '';
+
+                    // Add a default option
+                    const defaultOption = document.createElement('option');
+                    defaultOption.text = 'فندق مدينة المنورة ';
+                    selectElement.add(defaultOption);
+
+                    // Add options from the fetched data
+                    data.forEach(item => {
+                        const option = document.createElement('option');
+                        option.value = item.id; // Use a unique identifier from your data
+                        option.text = item.title; // Use a property from your data
+                        option.setAttribute('data-image', baseUrl + '/uploads/' + item
+                            .file_path); // Assuming there is an imagePath property
+
+                        selectElement.add(option);
+                    });
+                }
+
+
+
+                // Fetch data and populate the select element
+                fetchDataMekkah();
+                fetchDataMadina();
+            });
+
+            function updateImageDataMekkah() {
+                const selectElement = document.getElementById('mySelectMekkah');
+                const imageElement = document.getElementById('imageDisplay');
+                const selectedOption = selectElement.options[selectElement.selectedIndex];
+                const imagePath = selectedOption.getAttribute('data-image');
+
+                console.log(imagePath);
+                // Update the image source
+                imageElement.src = imagePath;
+            }
+
+            function updateImageDataMadina() {
+                const selectElement = document.getElementById('mySelectMadina');
+                const imageElement = document.getElementById('imageDisplay');
+                const selectedOption = selectElement.options[selectElement.selectedIndex];
+                const imagePath = selectedOption.getAttribute('data-image');
+
+                console.log(imagePath);
+                // Update the image source
+                imageElement.src = imagePath;
+            }
+        </script>
+
+
 
     </div>
     </div>
