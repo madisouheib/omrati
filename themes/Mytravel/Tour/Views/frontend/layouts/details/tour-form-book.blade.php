@@ -30,8 +30,9 @@
                 </div>
                 <div class="form-book" :class="{ 'd-none': enquiry_type != 'book' }">
                     <div class="p-4">
-                        <span
-                            class="d-block text-gray-1 font-weight-normal mb-0 text-left">{{ __('تاريخ البداية') }}</span>
+                        <button type="button" class="btn btn-warning" style="margin-right : 30%;"
+                            class="d-block text-gray-1 font-weight-normal mb-0 text-left"> {{ __('تاريخ البداية') }}
+                        </button>
                         <div class="mb-4">
                             <div class="border-bottom border-width-2 border-color-1 position-relative"
                                 data-format="{{ get_moment_date_format() }}">
