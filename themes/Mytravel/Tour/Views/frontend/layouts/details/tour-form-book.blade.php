@@ -23,8 +23,8 @@
 
 
 
-                    <button class="btn btn-success enquiry-item mt-2" style="margin-right : 30%;" data-toggle="modal"
-                        data-target="#enquiry_form_modal">
+                    <button class="btn btn-success enquiry-item mt-2" style="margin-right : 30%;font-weight:300"
+                        data-toggle="modal" data-target="#enquiry_form_modal">
                         <span> ارسال استفسار؟</span>
                     </button>
                 </div>
@@ -34,8 +34,8 @@
                         <div class="mb-4">
                             <div class="border-bottom border-width-2 border-color-1 position-relative"
                                 data-format="{{ get_moment_date_format() }}">
-                                <button type="button" style="margin-right : 30%;" class="btn btn-warning"
-                                    @click="openStartDate"
+                                <button type="button" style="margin-right : 23%; font-weight:300;"
+                                    class="btn btn-warning" @click="openStartDate"
                                     class="start_date d-flex align-items-center w-auto height-40 font-size-16 shadow-none font-weight-bold form-control hero-form bg-transparent border-0 flatpickr-input p-0">
                                     تحديد تاريخ الحجز
                                     <i class="fas fa-calendar-alt"></i>
