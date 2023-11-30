@@ -1,6 +1,6 @@
 <div class="item">
     <span class="d-block text-gray-1  font-weight-normal mb-0 text-left">
-        {{ $field['title'] ?? '' }}
+        المدينة
     </span>
     @if (setting_item('hotel_location_search_style') == 'autocompletePlace')
         <div class="mb-4">
@@ -46,7 +46,7 @@
                     <input type="text"
                         class="smart-search-location parent_text  font-weight-bold font-size-16 shadow-none hero-form font-weight-bold border-0 p-0"
                         {{ (empty(setting_item('hotel_location_search_style')) or setting_item('hotel_location_search_style') == 'normal') ? 'readonly' : '' }}
-                        placeholder="{{ __('بلد الانطلاق') }}" value="{{ $location_name }}"
+                        placeholder="{{ __('المدينة  ') }}" value="{{ $location_name }}"
                         data-onLoad="{{ __('Loading...') }}" data-default="{{ json_encode($list_json) }}">
                     <input type="hidden" class="child_id" name="location_id"
                         value="{{ Request::query('location_id') }}">
