@@ -27,7 +27,7 @@
                 $list_json = [];
                 $traverse = function ($locations, $prefix = '') use (&$traverse, &$list_json, &$location_name) {
                     foreach ($locations as $location) {
-                        if ($location->type_location == 1) {
+                        if ($location->type_location == 0) {
                             $translate = $location->translate();
                             if (Request::query('location_id') == $location->id) {
                                 $location_name = $translate->name;
