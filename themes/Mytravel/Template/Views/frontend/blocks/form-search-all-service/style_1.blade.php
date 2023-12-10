@@ -84,9 +84,9 @@
                     @endif
                 @endforeach
                 <li class="nav-item" role="bravo_bravo_morchid">
-                    <a class="nav-link font-weight-medium  @if ($number == 6) active @endif pl-md-5 pl-3 "
-                        id="bravo_bravo_morchid-tab" data-toggle="pill" href="#bravo_bravo_morchid" role="tab"
-                        aria-controls="bravo_morchid" aria-selected="true">
+                    <a class="nav-link font-weight-medium   pl-md-5 pl-3 " id="bravo_bravo_morchid-tab"
+                        data-toggle="pill" href="#bravo_bravo_morchid" role="tab" aria-controls="bravo_morchid"
+                        aria-selected="true">
                         <div class="d-flex flex-column flex-md-row  position-relative text-white align-items-center">
                             <figure class="ie-height-40 d-md-block mr-md-3">
                                 <i class="icon icofont-users-alt-1 font-size-3"></i>
@@ -98,9 +98,9 @@
                     </a>
                 </li>
                 <li class="nav-item" role="bravo_bravo_ticket">
-                    <a class="nav-link font-weight-medium  @if ($number == 7) active @endif pl-md-5 pl-3 "
-                        id="bravo_bravo_ticket-tab" data-toggle="pill" href="#bravo_bravo_ticket" role="tab"
-                        aria-controls="bravo_morchid" aria-selected="true">
+                    <a class="nav-link font-weight-medium   pl-md-5 pl-3 " id="bravo_bravo_ticket-tab"
+                        data-toggle="pill" href="#bravo_bravo_ticket" role="tab" aria-controls="bravo_morchid"
+                        aria-selected="true">
                         <div class="d-flex flex-column flex-md-row  position-relative text-white align-items-center">
                             <figure class="ie-height-40 d-md-block mr-md-3">
                                 <i class="icon icofont-air-ticket font-size-3"></i>
