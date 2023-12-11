@@ -123,7 +123,7 @@
 
                     <div class="card-body ">
 
-                        <h3 class="text-center mt-4 mb-4"> أحجز عمرتك الان</h3>
+                        <h3 class="text-center mt-4 mb-4"> أحجز تأشيرتك الان</h3>
                         <p>
                             بعد تعبئة النموذج وتقديمه، يتم معالجة الطلب من قبل الجهة المسؤولة ويتم إبلاغ المتقدم بالمواعيد
                             المحتملة وأية معلومات إضافية. يهدف هذا النموذج إلى جعل عملية تسجيل العمرة مبسطة وفعالة
@@ -454,160 +454,6 @@
                                                 </div>
                                                 <div class="col-6">
 
-                                                    <button onclick="nextToUmrah()" type="button"
-                                                        class="btn btn-success shadow-1" style="float: left;"> مواصلة
-                                                    </button>
-
-                                                </div>
-
-
-                                            </div>
-                                        </section>
-                                </section>
-                                <section id="personal-umrah" style="display: none;">
-                                    <h3> معلومات العمرة </h3>
-                                    <form>
-                                        <img id="imageDisplay"
-                                            style="display: block; width:500px;height:500px; margin-left:auto;margin-right:auto;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
-                                            src="" alt="Selected Image">
-                                        <div class="row p4">
-
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="form-outline">
-                                                    <label style="font-weight: bold;"> عدد الأيام في مكة</label>
-                                                    <input type="number" class="form-control ps-5"
-                                                        placeholder="عدد الأيام في مكة" />
-                                                    <i class="fas fa-plus ms-3"></i>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="form-outline">
-                                                    <label style="font-weight: bold;"> فندق مكة</label>
-
-
-                                                    <select class="form-control" onchange="updateImageDataMekkah()"
-                                                        id="mySelectMekkah">
-
-                                                    </select>
-                                                    <i class="fas fa-hotel ms-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="form-outline">
-                                                    <label style="font-weight: bold;"> عدد الأيام في المدينة</label>
-                                                    <input type="email" class="form-control ps-5"
-                                                        placeholder="عدد الأيام في المدينة  " />
-                                                    <i class="fas fa-plus ms-3"></i>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="form-outline">
-                                                    <label style="font-weight: bold;">
-                                                        فندق مدينة المنورة
-                                                    </label>
-                                                    <select class="form-control" id="mySelectMadina"
-                                                        onchange="updateImageDataMadina()">
-
-                                                        <option>فندق إعمار إيليت </option>
-                                                        <option> فندق إعمار إيليت </option>
-                                                    </select>
-                                                    <i class="fas fa-hotel ms-3"></i>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <section id="panel-switch mt-4" style="margin-top:3%;">
-                                            <div class="row mt-2">
-                                                <div class="col-6">
-                                                    <button onclick="returnToReservation()" type="button"
-                                                        class="btn btn-light shadow-1" style="float:right;"> العودة
-                                                    </button>
-
-                                                </div>
-                                                <div class="col-6">
-
-                                                    <button onclick="nextToPlus()" type="button"
-                                                        class="btn btn-success shadow-1" style="float: left;"> مواصلة
-                                                    </button>
-
-                                                </div>
-
-
-                                            </div>
-                                        </section>
-                                </section>
-                                <section id="personal-plus" style="display: none">
-                                    <h3> تفضيلات </h3>
-                                    <form>
-                                        <div class="row p4">
-
-                                            <div class="col-md-12 col-xs-6 col-lg-12 mt-4">
-                                                <label style="font-weight: bold;"> هل تريد خدمة النقل؟ </label>
-                                                <div class="row">
-
-
-                                                    <div class="col-5">
-
-                                                        <div class="form-outline">
-                                                            <label> نعم</label>
-                                                            <input type="radio" class="form-control ps-5" />
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-5">
-
-                                                        <div class="form-outline">
-                                                            <label> لا </label>
-                                                            <input type="radio" class="form-control ps-5" />
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="col-md-12 col-xs-6 col-lg-12 mt-4">
-                                                <label style="font-weight: bold;"> هل تريد جولات سياحية خلال برنامجك
-                                                    السياحي ؟</label>
-                                                <div class="row">
-
-
-                                                    <div class="col-5">
-
-                                                        <div class="form-outline">
-                                                            <label> نعم</label>
-                                                            <input type="radio" class="form-control ps-5" />
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-5">
-
-                                                        <div class="form-outline">
-                                                            <label> لا </label>
-                                                            <input type="radio" class="form-control ps-5" />
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-
-                                        </div>
-                                        <section id="panel-switch mt-4" style="margin-top:3%;">
-                                            <div class=" row mt-2">
-                                                <div class="col-6">
-                                                    <button onclick="returnToUmrah()" type="button"
-                                                        class="btn btn-light shadow-1" style="float:right;"> العودة
-                                                    </button>
-
-                                                </div>
-                                                <div class="col-6">
-
                                                     <button onclick="nextToRevision()" type="button"
                                                         class="btn btn-success shadow-1" style="float: left;"> مواصلة
                                                     </button>
@@ -618,6 +464,8 @@
                                             </div>
                                         </section>
                                 </section>
+
+
                                 <section id="personal-revision" style="display: none">
                                     <h3> مراجعة عامة </h3>
                                     <form>
@@ -625,48 +473,11 @@
 
 
 
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="card">
-                                                    <img class="card-img-top"
-                                                        src="https://image-tc.galaxy.tf/wijpeg-2bng9k7qkw0kv6e1wy08la3m2/penta-duplex-suite-1_wide.jpg?crop=0%2C51%2C980%2C551"
-                                                        alt="Card image cap">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">فندق إعمار مكة</h5>
-                                                        <p class="card-text">Some quick example text to build on the card
-                                                            title and make up the bulk of the card's content.</p>
+                                            <img class="mt-2" src="{{ url('images/check-out.png') }}"
+                                                style="display: block;height:100px;width:100px;" />
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="card">
-                                                    <img class="card-img-top"
-                                                        src="https://image-tc.galaxy.tf/wijpeg-2bng9k7qkw0kv6e1wy08la3m2/penta-duplex-suite-1_wide.jpg?crop=0%2C51%2C980%2C551"
-                                                        alt="Card image cap">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">فندق إعمار المدينة</h5>
-                                                        <p class="card-text">Some quick example text to build on the card
-                                                            title and make up the bulk of the card's content.</p>
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="form-outline">
-                                                    <label style="font-weight: bold;"> مراجعة عامة</label>
-                                                    <input type="number" readonly class="form-control ps-5"
-                                                        placeholder="عدد الأيام في مكة" />
-                                                    <i class="fas fa-plus ms-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="form-outline">
-                                                    <label style="font-weight: bold;"> عدد الأيام في المدينة</label>
-                                                    <input type="number" readonly class="form-control ps-5"
-                                                        placeholder="عدد الأيام في المدينة  " />
-                                                    <i class="fas fa-plus ms-3"></i>
-                                                </div>
-                                            </div>
+
 
 
                                         </div>
@@ -771,11 +582,12 @@
 
             function nextToRevision() {
 
-
-                var sectionPlusData = document.getElementById("personal-plus");
+                var sectionReservationData = document.getElementById("personal-reservation");
+                sectionReservationData.style.display = "none";
                 var sectionRevision = document.getElementById("personal-revision");
                 sectionRevision.style.display = "block";
-                sectionPlusData.style.display = "none";
+
+
 
 
             }
