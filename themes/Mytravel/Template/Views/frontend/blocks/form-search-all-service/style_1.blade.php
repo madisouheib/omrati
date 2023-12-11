@@ -84,9 +84,8 @@
                     @endif
                 @endforeach
                 <li class="nav-item" role="bravo_bravo_morchid">
-                    <a class="nav-link font-weight-medium   pl-md-5 pl-3 " id="bravo_bravo_morchid-tab"
-                        data-toggle="pill" href="#bravo_bravo_morchid" role="tab" aria-controls="bravo_morchid"
-                        aria-selected="true">
+                    <a class="nav-link font-weight-medium    pl-md-5 pl-3 " onclick="callMorchid()" data-toggle="pill"
+                        role="tab" aria-selected="true">
                         <div class="d-flex flex-column flex-md-row  position-relative text-white align-items-center">
                             <figure class="ie-height-40 d-md-block mr-md-3">
                                 <i class="icon icofont-users-alt-1 font-size-3"></i>
@@ -98,9 +97,8 @@
                     </a>
                 </li>
                 <li class="nav-item" role="bravo_bravo_ticket">
-                    <a class="nav-link font-weight-medium   pl-md-5 pl-3 " id="bravo_bravo_ticket-tab"
-                        data-toggle="pill" href="#bravo_bravo_ticket" role="tab" aria-controls="bravo_morchid"
-                        aria-selected="true">
+                    <a class="nav-link font-weight-medium   pl-md-5 pl-3 " onclick="callTicket()" data-toggle="pill"
+                        role="tab" aria-controls="bravo_morchid" aria-selected="true">
                         <div class="d-flex flex-column flex-md-row  position-relative text-white align-items-center">
                             <figure class="ie-height-40 d-md-block mr-md-3">
                                 <i class="icon icofont-air-ticket font-size-3"></i>
@@ -117,6 +115,23 @@
         <div class="tab-content hero-tab-pane">
             <!-- Display tour content -->
             @if (!empty($service_types) && in_array('tour', $service_types))
+                @php
+                    $service_type = 'tour';
+                    $allServices = get_bookable_services();
+                    $module = new ($allServices[$service_type])();
+                @endphp
+                <div class="tab-pane fade @if ($service_type == 'tour') active show @endif"
+                    id="bravo_{{ $service_type }}" role="tabpanel" aria-labelledby="bravo_{{ $service_type }}-tab">
+                    <div class="card border-0 tab-shadow">
+                        <div class="card-body">
+                            @include(ucfirst($service_type) . '::frontend.layouts.search.form-search')
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            <!-- Display Morchid content -->
+            @if (!empty($service_types) && in_array('morchid', $service_types))
                 @php
                     $service_type = 'tour';
                     $allServices = get_bookable_services();
@@ -174,3 +189,38 @@
         </div>
     </div>
 </div>
+<script>
+    function callMorchid() {
+
+        var tabContents = document.getElementsByClassName('tab-content');
+
+        // Loop through the collection and hide each element
+        for (var i = 0; i < tabContents.length; i++) {
+            tabContents[i].style.display = 'none';
+        }
+
+
+        setTimeout(function() {
+            window.location.href = '/registerwizard';
+        }, 400);
+
+
+    }
+
+    function callTicket() {
+
+        var tabContents = document.getElementsByClassName('tab-content');
+
+        // Loop through the collection and hide each element
+        for (var i = 0; i < tabContents.length; i++) {
+            tabContents[i].style.display = 'none';
+        }
+
+
+        setTimeout(function() {
+            window.location.href = '/registertickets';
+        }, 400);
+
+
+    }
+</script>

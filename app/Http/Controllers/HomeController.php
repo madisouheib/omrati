@@ -103,6 +103,11 @@ class HomeController extends Controller
 
     }
 
+
+    public function indexTickets(){
+        return view('home_wizard_morchid');
+
+    }
     public function getHotelsMadina(){
 
         $data = Hotel::select('bravo_hotels.*','media_files.file_path')

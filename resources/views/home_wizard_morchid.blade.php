@@ -123,7 +123,7 @@
 
                     <div class="card-body ">
 
-                        <h3 class="text-center mt-4 mb-4"> أحجز عمرتك الان</h3>
+                        <h3 class="text-center mt-4 mb-4"> أحجز تأشيرتك الان</h3>
                         <p>
                             بعد تعبئة النموذج وتقديمه، يتم معالجة الطلب من قبل الجهة المسؤولة ويتم إبلاغ المتقدم بالمواعيد
                             المحتملة وأية معلومات إضافية. يهدف هذا النموذج إلى جعل عملية تسجيل العمرة مبسطة وفعالة
@@ -454,7 +454,7 @@
                                                 </div>
                                                 <div class="col-6">
 
-                                                    <button onclick="nextToUmrah()" type="button"
+                                                    <button onclick="nextToRevision()" type="button"
                                                         class="btn btn-success shadow-1" style="float: left;"> مواصلة
                                                     </button>
 
@@ -473,48 +473,11 @@
 
 
 
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="card">
-                                                    <img class="card-img-top"
-                                                        src="https://image-tc.galaxy.tf/wijpeg-2bng9k7qkw0kv6e1wy08la3m2/penta-duplex-suite-1_wide.jpg?crop=0%2C51%2C980%2C551"
-                                                        alt="Card image cap">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">فندق إعمار مكة</h5>
-                                                        <p class="card-text">Some quick example text to build on the card
-                                                            title and make up the bulk of the card's content.</p>
+                                            <im class="mt-2" src="{{ url('images/check-out.png') }}"
+                                                style="display: block;height:100px;width:100px;" />
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="card">
-                                                    <img class="card-img-top"
-                                                        src="https://image-tc.galaxy.tf/wijpeg-2bng9k7qkw0kv6e1wy08la3m2/penta-duplex-suite-1_wide.jpg?crop=0%2C51%2C980%2C551"
-                                                        alt="Card image cap">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">فندق إعمار المدينة</h5>
-                                                        <p class="card-text">Some quick example text to build on the card
-                                                            title and make up the bulk of the card's content.</p>
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="form-outline">
-                                                    <label style="font-weight: bold;"> مراجعة عامة</label>
-                                                    <input type="number" readonly class="form-control ps-5"
-                                                        placeholder="عدد الأيام في مكة" />
-                                                    <i class="fas fa-plus ms-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="form-outline">
-                                                    <label style="font-weight: bold;"> عدد الأيام في المدينة</label>
-                                                    <input type="number" readonly class="form-control ps-5"
-                                                        placeholder="عدد الأيام في المدينة  " />
-                                                    <i class="fas fa-plus ms-3"></i>
-                                                </div>
-                                            </div>
+
 
 
                                         </div>
@@ -619,11 +582,12 @@
 
             function nextToRevision() {
 
-
-                var sectionPlusData = document.getElementById("personal-plus");
+                var sectionReservationData = document.getElementById("personal-reservation");
+                sectionReservationData.style.display = "none";
                 var sectionRevision = document.getElementById("personal-revision");
                 sectionRevision.style.display = "block";
-                sectionPlusData.style.display = "none";
+
+
 
 
             }
