@@ -217,8 +217,8 @@
                                         <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                             <div class="form-outline">
                                                 <label style="font-weight: bold;"> الجنسية</label>
-                                                <select name="country" id="mySelectVillages" class="form-control">
-                                                    <option value="" disabled selected>إختر</option>
+                                                <select id="mySelectVillages" class="form-control">
+
 
                                                 </select>
 
