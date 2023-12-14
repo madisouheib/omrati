@@ -626,7 +626,7 @@
                 }
 
                 function fetchDataMekkah() {
-                    fetch('/api/gettowns') // Replace with your API endpoint
+                    fetch('/api/getvillages') // Replace with your API endpoint
                         .then(response => response.json())
                         .then(data => populateSelectMadina(data))
                         .catch(error => console.error('Error fetching data:', error));
