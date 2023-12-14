@@ -217,7 +217,7 @@
                                         <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                             <div class="form-outline">
                                                 <label style="font-weight: bold;"> الجنسية</label>
-                                                <select id="mySelectVillages" class="form-control">
+                                                <select class="form-control" id="mySelectVillages">
 
 
                                                 </select>
@@ -604,14 +604,16 @@
                 // Function to fetch data from the API
                 const baseUrl = window.location.origin;
 
-                function fetchDataMadina() {
-                    fetch('/api/getmekkahhotels') // Replace with your API endpoint
+
+
+                function fetchDataMekkah() {
+                    fetch('/api/getmadinahotels') // Replace with your API endpoint
                         .then(response => response.json())
                         .then(data => populateSelect(data))
                         .catch(error => console.error('Error fetching data:', error));
                 }
 
-                function fetchDataMekkah() {
+                function fetchDataMadina() {
                     fetch('/api/getmadinahotels') // Replace with your API endpoint
                         .then(response => response.json())
                         .then(data => populateSelectMadina(data))
@@ -625,24 +627,18 @@
                         .catch(error => console.error('Error fetching data:', error));
                 }
 
-                function fetchDataMekkah() {
-                    fetch('/api/getvillages') // Replace with your API endpoint
-                        .then(response => response.json())
-                        .then(data => populateSelectMadina(data))
-                        .catch(error => console.error('Error fetching data:', error));
-                }
 
                 // Function to populate the select element with data
                 function populateSelect(data) {
-                    const selectElement = document.getElementById('mySelectMekkah');
+                    const selectElementMekkah = document.getElementById('mySelectMekkah');
 
                     // Clear existing options
-                    selectElement.innerHTML = '';
+                    selectElementMekkah.innerHTML = '';
 
                     // Add a default option
                     const defaultOption = document.createElement('option');
                     defaultOption.text = 'فندق مدينة مكة ';
-                    selectElement.add(defaultOption);
+                    selectElementMekkah.add(defaultOption);
 
                     // Add options from the fetched data
                     data.forEach(item => {
@@ -652,7 +648,7 @@
                         option.setAttribute('data-image', baseUrl + '/uploads/' + item
                             .file_path); // Assuming there is an imagePath property
 
-                        selectElement.add(option);
+                        selectElementMekkah.add(option);
                     });
                 }
 
@@ -680,24 +676,24 @@
                 }
 
                 function populateSelectVillages(data) {
-                    const selectElement = document.getElementById('mySelectVillages');
+                    const selectElementTowns = document.getElementById('mySelectVillages');
 
                     // Clear existing options
-                    selectElement.innerHTML = '';
+                    selectElementTowns.innerHTML = '';
 
                     // Add a default option
                     const defaultOption = document.createElement('option');
                     defaultOption.text = '  اختر الجنسية ';
-                    selectElement.add(defaultOption);
+                    selectElementTowns.add(defaultOption);
 
                     // Add options from the fetched data
-                    data.forEach(item => {
+                    data.forEach(items => {
                         const option = document.createElement('option');
-                        option.value = item.id; // Use a unique identifier from your data
-                        option.text = item.name; // Use a property from your data
+                        option.value = items.id; // Use a unique identifier from your data
+                        option.text = items.name; // Use a property from your data
 
 
-                        selectElement.add(option);
+                        selectElementTowns.add(option);
                     });
                 }
 
@@ -706,7 +702,10 @@
                 // Fetch data and populate the select element
                 fetchDataMekkah();
                 fetchDataMadina();
+                fetchDataVillages();
             });
+
+
 
             function updateImageDataMekkah() {
                 const selectElement = document.getElementById('mySelectMekkah');
