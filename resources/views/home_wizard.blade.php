@@ -694,9 +694,8 @@
                     data.forEach(item => {
                         const option = document.createElement('option');
                         option.value = item.id; // Use a unique identifier from your data
-                        option.text = item.title; // Use a property from your data
-                        option.setAttribute('data-image', baseUrl + '/uploads/' + item
-                            .file_path); // Assuming there is an imagePath property
+                        option.text = item.name; // Use a property from your data
+
 
                         selectElement.add(option);
                     });
