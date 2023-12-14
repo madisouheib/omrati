@@ -1,69 +1,88 @@
 <div class="bravo_header">
-    <div class="{{$container_class ?? 'container'}}">
+    <div class="{{ $container_class ?? 'container' }}">
         <div class="content">
             <div class="header-left">
-                <a href="{{url(app_get_locale(false,'/'))}}" class="bravo-logo">
+                <a href="{{ url(app_get_locale(false, '/')) }}" class="bravo-logo">
                     @php
-                        $logo_id = setting_item("logo_id");
-                        if(!empty($row->custom_logo)){
+                        $logo_id = setting_item('logo_id');
+                        if (!empty($row->custom_logo)) {
                             $logo_id = $row->custom_logo;
                         }
                     @endphp
-                    @if($logo_id)
-                        <?php $logo = get_file_url($logo_id,'full') ?>
-                        <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
+                    @if ($logo_id)
+                        <?php $logo = get_file_url($logo_id, 'full'); ?>
+                        <img src="{{ $logo }}" alt="{{ setting_item('site_title') }}">
                     @endif
                 </a>
-                <div class="bravo-menu" >
-                    <?php generate_menu('primary') ?>
+                <div class="bravo-menu">
+                    <?php generate_menu('primary'); ?>
                 </div>
             </div>
             <div class="header-right">
-                @if(!empty($header_right_menu))
+                @if (!empty($header_right_menu))
                     <ul class="topbar-items">
                         @include('Core::frontend.currency-switcher')
                         @include('Language::frontend.switcher')
-                        @if(!Auth::check())
+                        @if (!Auth::check())
                             <li class="login-item">
-                                <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('تسجيل الدخول')}}</a>
+                                <a href="#login" data-toggle="modal" data-target="#login"
+                                    class="login">{{ __('تسجيل الدخول') }}</a>
                             </li>
-                            @if(is_enable_registration())
+                            @if (is_enable_registration())
                                 <li class="signup-item">
-                                    <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('التسجيل')}}</a>
+                                    <a href="#register" data-toggle="modal" data-target="#register"
+                                        class="signup">{{ __('التسجيل') }}</a>
                                 </li>
                             @endif
                         @else
+                            <li>
+                                <a href="#register" class="signup"> سلة الحجوزات</a>
+                            </li>
                             <li class="login-item dropdown">
                                 <a href="#" data-toggle="dropdown" class="is_login">
-                                    @if($avatar_url = Auth::user()->getAvatarUrl())
-                                        <img class="avatar" src="{{$avatar_url}}" alt="{{ Auth::user()->getDisplayName()}}">
+                                    @if ($avatar_url = Auth::user()->getAvatarUrl())
+                                        <img class="avatar" src="{{ $avatar_url }}"
+                                            alt="{{ Auth::user()->getDisplayName() }}">
                                     @else
-                                        <span class="avatar-text">{{ucfirst( Auth::user()->getDisplayName()[0])}}</span>
+                                        <span
+                                            class="avatar-text">{{ ucfirst(Auth::user()->getDisplayName()[0]) }}</span>
                                     @endif
-                                    {{__("مرحبًا، :Name",['name'=>Auth::user()->getDisplayName()])}}
+                                    {{ __('مرحبًا، :Name', ['name' => Auth::user()->getDisplayName()]) }}
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu text-left">
 
-                                    @if(Auth::user()->hasPermission('dashboard_vendor_access'))
-                                        <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("لوحة تحليلات البائع")}}</a></li>
+                                    @if (Auth::user()->hasPermission('dashboard_vendor_access'))
+                                        <li><a href="{{ route('vendor.dashboard') }}"><i
+                                                    class="icon ion-md-analytics"></i>
+                                                {{ __('لوحة تحليلات البائع') }}</a></li>
                                     @endif
-                                    <li class="@if(Auth::user()->hasPermission('dashboard_vendor_access')) menu-hr @endif">
-                                        <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("ملفي الشخصي")}}</a>
+                                    <li class="@if (Auth::user()->hasPermission('dashboard_vendor_access')) menu-hr @endif">
+                                        <a href="{{ route('user.profile.index') }}"><i
+                                                class="icon ion-md-construct"></i> {{ __('ملفي الشخصي') }}</a>
                                     </li>
-                                    @if(setting_item('inbox_enable'))
-                                    <li class="menu-hr"><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("الرسائل")}}</a></li>
+                                    @if (setting_item('inbox_enable'))
+                                        <li class="menu-hr"><a href="{{ route('user.chat') }}"><i
+                                                    class="fa fa-comments"></i> {{ __('الرسائل') }}</a></li>
                                     @endif
-                                    <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("سلة الحجوزات")}}</a></li>
-                                    <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("تغيير كلمة المرور")}}</a></li>
-                                    @if(Auth::user()->hasPermission('dashboard_access'))
-                                        <li class="menu-hr"><a href="{{route('admin.index')}}"><i class="icon ion-ios-ribbon"></i> {{__("لوحة التحكم للمشرف")}}</a></li>
+                                    <li class="menu-hr"><a href="{{ route('user.booking_history') }}"><i
+                                                class="fa fa-clock-o"></i> {{ __('سلة الحجوزات') }}</a></li>
+                                    <li class="menu-hr"><a href="{{ route('user.change_password') }}"><i
+                                                class="fa fa-lock"></i> {{ __('تغيير كلمة المرور') }}</a></li>
+                                    @if (Auth::user()->hasPermission('dashboard_access'))
+                                        <li class="menu-hr"><a href="{{ route('admin.index') }}"><i
+                                                    class="icon ion-ios-ribbon"></i> {{ __('لوحة التحكم للمشرف') }}</a>
+                                        </li>
                                     @endif
                                     <li class="menu-hr">
-                                        <a  href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> {{__('تسجيل الخروج')}}</a>
+                                        <a href="#"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                                class="fa fa-sign-out"></i> {{ __('تسجيل الخروج') }}
+                                        </a>
                                     </li>
                                 </ul>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </li>
@@ -81,46 +100,53 @@
             <div class="b-close"><i class="icofont-scroll-left"></i></div>
             <div class="avatar"></div>
             <ul>
-                @if(!Auth::check())
+                @if (!Auth::check())
                     <li>
-                        <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('تسجيل الدخول')}}</a>
+                        <a href="#login" data-toggle="modal" data-target="#login"
+                            class="login">{{ __('تسجيل الدخول') }}</a>
                     </li>
-                    @if(is_enable_registration())
+                    @if (is_enable_registration())
                         <li>
-                            <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('التسجيل')}}</a>
+                            <a href="#register" data-toggle="modal" data-target="#register"
+                                class="signup">{{ __('التسجيل') }}</a>
                         </li>
                     @endif
                 @else
                     <li>
-                        <a href="{{route('user.profile.index')}}">
-                            <i class="icofont-user-suited"></i> {{__("مرحبًا، :Name",['name'=>Auth::user()->getDisplayName()])}}
+                        <a href="{{ route('user.profile.index') }}">
+                            <i class="icofont-user-suited"></i>
+                            {{ __('مرحبًا، :Name', ['name' => Auth::user()->getDisplayName()]) }}
                         </a>
                     </li>
-                    @if(Auth::user()->hasPermission('dashboard_vendor_access'))
-                        <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("لوحة تحليلات البائع")}}</a></li>
+                    @if (Auth::user()->hasPermission('dashboard_vendor_access'))
+                        <li><a href="{{ route('vendor.dashboard') }}"><i class="icon ion-md-analytics"></i>
+                                {{ __('لوحة تحليلات البائع') }}</a></li>
                     @endif
-                    @if(Auth::user()->hasPermission('dashboard_access'))
+                    @if (Auth::user()->hasPermission('dashboard_access'))
                         <li>
-                            <a href="{{route('admin.index')}}"><i class="icon ion-ios-ribbon"></i> {{__("لوحة التحكم للمشرف")}}</a>
+                            <a href="{{ route('admin.index') }}"><i class="icon ion-ios-ribbon"></i>
+                                {{ __('لوحة التحكم للمشرف') }}</a>
                         </li>
                     @endif
                     <li>
-                        <a href="{{route('user.profile.index')}}">
-                            <i class="icon ion-md-construct"></i> {{__("ملفي الشخصي")}}
+                        <a href="{{ route('user.profile.index') }}">
+                            <i class="icon ion-md-construct"></i> {{ __('ملفي الشخصي') }}
                         </a>
                     </li>
                     <li>
-                        <a  href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
-                            <i class="fa fa-sign-out"></i> {{__('تسجيل الخروج')}}
+                        <a href="#"
+                            onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
+                            <i class="fa fa-sign-out"></i> {{ __('تسجيل الخروج') }}
                         </a>
-                        <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST"
+                            style="display: none;">
                             {{ csrf_field() }}
                         </form>
                     </li>
 
                 @endif
             </ul>
-           
+
             <ul class="multi-lang">
                 @include('Core::frontend.currency-switcher')
             </ul>
@@ -129,7 +155,7 @@
             </ul>
         </div>
         <div class="g-menu">
-            <?php generate_menu('primary') ?>
+            <?php generate_menu('primary'); ?>
         </div>
     </div>
 </div>

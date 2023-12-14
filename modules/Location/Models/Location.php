@@ -20,6 +20,7 @@
             'content',
             'image_id',
             'map_lat',
+            'type_location',
             'map_lng',
             'map_zoom',
             'status',

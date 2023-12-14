@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('getmadinahotels', 'HomeController@getHotelsMadina');
 
 Route::get('getmekkahhotels', 'HomeController@getHotelsMekkah');
+Route::get('getvillages', 'HomeController@getVillages');

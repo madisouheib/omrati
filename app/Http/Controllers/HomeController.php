@@ -8,6 +8,7 @@ use Modules\Page\Models\Page;
 use Modules\News\Models\NewsCategory;
 use Modules\News\Models\Tag;
 use Modules\News\Models\News;
+use Modules\Location\Models\Location;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -132,5 +133,16 @@ return response()->json($data);
         
         return response()->json($data);
         
+    }
+
+    public function getVillages(){
+
+
+        $dataLocations = Location::where('type_location',false)->get();
+
+
+        return response()->json($dataLocations);
+
+
     }
 }
