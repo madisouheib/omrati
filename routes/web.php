@@ -18,6 +18,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/registerwizard', 'HomeController@indexWizard')->name('indexWizard');
 Route::get('/registertickets', 'HomeController@indexTickets')->name('indexTickets');
+Route::get('/registermorchid', 'HomeController@indexMorchid')->name('indexMorchid');
 Route::post('/install/check-db', 'HomeController@checkConnectDatabase');
 
 // Social Login
