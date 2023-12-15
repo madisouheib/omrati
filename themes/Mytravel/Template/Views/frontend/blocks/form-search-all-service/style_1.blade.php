@@ -201,7 +201,7 @@
 
 
         setTimeout(function() {
-            window.location.href = '/registerwizard';
+            window.location.href = '/registermorchid';
         }, 400);
 
 
@@ -209,6 +209,7 @@
 
     function callTicket() {
 
+        //see
         var tabContents = document.getElementsByClassName('tab-content');
 
         // Loop through the collection and hide each element
