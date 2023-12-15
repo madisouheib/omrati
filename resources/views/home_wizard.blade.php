@@ -209,7 +209,7 @@
                                         <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                             <div class="form-outline">
                                                 <label style="font-weight: bold;"> عدد الأشخاص</label>
-                                                <input type="number" class="form-control ps-5" placeholder="محمد" />
+                                                <input type="number" class="form-control ps-5" placeholder="عدد الأشخاص" />
                                                 <i class="fas fa-plus ms-3"></i>
                                             </div>
                                         </div>
@@ -488,7 +488,9 @@
                                             <div class="col-6">
 
                                                 <button onclick="nextToReservation()" type="button"
-                                                    class="btn btn-success shadow-1" style="float: left;"> تأكيد الحجز
+                                                    class="btn btn-success shadow-1" type="submit" name="valid"
+                                                    style="float: left;">
+                                                    تأكيد الحجز
                                                 </button>
 
                                             </div>

@@ -9,7 +9,7 @@ use Modules\News\Models\NewsCategory;
 use Modules\News\Models\Tag;
 use Modules\News\Models\News;
 use Modules\Location\Models\Location;
-
+use Modules\Booking\Models\Booking;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 class HomeController extends Controller
@@ -19,8 +19,12 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+
+     protected $booking;
+    public function __construct(Booking $booking)
     {
+
+        $this->booking = $booking;
 
     }
 
@@ -106,6 +110,12 @@ class HomeController extends Controller
 
 
     public function indexTickets(){
+        return view('home_wizard_tickets');
+
+    }
+
+    public function indexMorchid(){
+
         return view('home_wizard_morchid');
 
     }
@@ -142,6 +152,28 @@ return response()->json($data);
 
 
         return response()->json($dataLocations);
+
+
+    }
+
+    public function createBooking(Request $request){
+
+      $booking  =  $this->booking ;
+    $booking->first_name = $request->input('first_name');
+    $booking->last_name = $request->input('last_name');
+    $booking->email = $request->input('email');
+    $booking->phone = $request->input('phone');
+    $booking->address = $request->input('address_line_1');
+    $booking->address2 = $request->input('address_line_2');
+    $booking->city = $request->input('city');
+    $booking->state = $request->input('state');
+    $booking->zip_code = $request->input('zip_code');
+    $booking->country = $request->input('country');
+    $booking->customer_notes = $request->input('customer_notes');
+    $booking->gateway = $payment_gateway;
+    $booking->wallet_credit_used = floatval($credit);
+    $booking->wallet_total_used = floatval($wallet_total_used);
+    $booking->pay_now = floatval((int)$booking->deposit == null ? $booking->total : (int)$booking->deposit);
 
 
     }
