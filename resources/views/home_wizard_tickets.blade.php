@@ -560,7 +560,7 @@
                 // Function to fetch data from the API
                 const baseUrl = window.location.origin;
 
-
+                console.log('hi there ');
 
                 function fetchDataMekkah() {
                     fetch('/api/getmadinahotels') // Replace with your API endpoint
