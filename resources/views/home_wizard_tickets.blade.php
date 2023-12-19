@@ -220,7 +220,7 @@
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> عدد الأشخاص</label>
                                                     <input type="number" name="nb_person" class="form-control ps-5"
-                                                        placeholder="محمد" />
+                                                        placeholder="عدد الأشخاص" />
                                                     <i class="fas fa-plus ms-3"></i>
                                                 </div>
                                             </div>
