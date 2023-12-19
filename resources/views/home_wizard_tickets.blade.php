@@ -116,7 +116,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <div class="container mt-4">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <div class="container mt-4" id="app">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -151,23 +153,32 @@
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> الاسم</label>
-                                                    <input type="text" class="form-control ps-5" placeholder="محمد" />
+                                                    <input type="text" name="last_name" v-model="first_name"
+                                                        class="form-control ps-5" placeholder="محمد" />
                                                     <i class="fas fa-user ms-3"></i>
                                                 </div>
                                             </div>
-
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> كلمة المرور</label>
+                                                    <input type="password" name="password" v-model="password"
+                                                        class="form-control ps-5" placeholder="كلمة المرور" />
+                                                    <i class="fas fa-lock ms-3"></i>
+                                                </div>
+                                            </div>
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> اللقب</label>
-                                                    <input type="text" class="form-control ps-5" placeholder="اندلسي" />
+                                                    <input type="text" name="last_name" v-model="last_name"
+                                                        class="form-control ps-5" placeholder="اندلسي" />
                                                     <i class="fas fa-user ms-3"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> البريد الالكتروني</label>
-                                                    <input type="email" class="form-control ps-5"
-                                                        placeholder="البريد الالكتروني " />
+                                                    <input type="email" name="email" v-model="email"
+                                                        class="form-control ps-5" placeholder="البريد الالكتروني " />
                                                     <i class="fas fa-envelope ms-3"></i>
                                                 </div>
                                             </div>
@@ -175,8 +186,8 @@
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> رقم الهاتف</label>
-                                                    <input type="number" class="form-control ps-5"
-                                                        placeholder="+1 34 43 43 " />
+                                                    <input type="number" name="phone" v-model="phone"
+                                                        class="form-control ps-5" placeholder="+1 34 43 43 " />
                                                     <i class="fas fa-phone ms-3"></i>
                                                 </div>
                                             </div>
@@ -208,16 +219,16 @@
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> عدد الأشخاص</label>
-                                                    <input type="number" class="form-control ps-5" placeholder="محمد" />
+                                                    <input type="number" name="nb_person" class="form-control ps-5"
+                                                        placeholder="محمد" />
                                                     <i class="fas fa-plus ms-3"></i>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
-                                                    <label style="font-weight: bold;"> الجنسية</label>
+                                                    <label style="font-weight: bold;" v-model="nationality"> الجنسية</label>
                                                     <select class="form-control" id="mySelectVillages">
-
 
                                                     </select>
 
@@ -229,9 +240,9 @@
 
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> نوع التأشيرة</label>
-                                                    <select name="country" class="form-control">
-                                                        <option> تأشيرة سياحية </option>
-                                                        <option> تأشيرة عمرة </option>
+                                                    <select name="country" v-model="ticket" id="mySelectVisas"
+                                                        class="form-control">
+
                                                     </select>
                                                     <i class="fas fa-plane ms-3"></i>
                                                 </div>
@@ -242,8 +253,8 @@
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> مكان الاقامة</label>
-                                                    <input type="text" class="form-control ps-5"
-                                                        placeholder=" مكان الاقامة" />
+                                                    <input v-model="residance" type="text"
+                                                        class="form-control ps-5" />
                                                     <i class="fas fa-map ms-3"></i>
                                                 </div>
                                             </div>
@@ -275,27 +286,93 @@
                                     <form>
                                         <div class="row p4">
 
+                                            <div class="col-md-12 col-xs-12 col-lg-12 mt-4">
+
+                                                <img class="mt-2" src="{{ url('images/check-out.png') }}"
+                                                    style="display: block;height:100px;width:100px;margin:auto;" />
+                                            </div>
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> الاسم</label>
+                                                    <input type="text" readonly class="form-control ps-5"
+                                                        v-model="first_name" readonly placeholder="محمد" />
+                                                    <i class="fas fa-user ms-3"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> اللقب</label>
+                                                    <input type="text" readonly class="form-control ps-5"
+                                                        placeholder="اندلسي" />
+                                                    <i class="fas fa-user ms-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> البريد الالكتروني</label>
+                                                    <input type="email" v-model="email" readonly
+                                                        class="form-control ps-5" placeholder="البريد الالكتروني " />
+                                                    <i class="fas fa-envelope ms-3"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> رقم الهاتف</label>
+                                                    <input type="number" v-model="phone" readonly
+                                                        class="form-control ps-5" />
+                                                    <i class="fas fa-phone ms-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> عدد الأشخاص</label>
+                                                    <input type="number" readonly class="form-control ps-5" />
+                                                    <i class="fas fa-plus ms-3"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> جنسية </label>
+                                                    <input type="text" v-model="nationality" readonly
+                                                        class="form-control ps-5" />
+                                                    <i class="fas fa-flag ms-3"></i>
+                                                </div>
+                                            </div>
 
 
-                                            <img class="mt-2" src="{{ url('images/check-out.png') }}"
-                                                style="display: block;height:100px;width:100px;" />
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> تأشيرة </label>
+                                                    <input type="text" v-model="ticket" readonly
+                                                        class="form-control ps-5" />
+                                                    <i class="fas fa-plane ms-3"></i>
+                                                </div>
+                                            </div>
 
-
-
-
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> مكان الاقامة</label>
+                                                    <input type="text" v-model="residance" readonly
+                                                        class="form-control ps-5" placeholder=" مكان الاقامة" />
+                                                    <i class="fas fa-map ms-3"></i>
+                                                </div>
+                                            </div>
 
                                         </div>
                                         <section id="panel-switch mt-4" style="margin-top:3%;">
                                             <div class="row mt-2">
                                                 <div class="col-6">
-                                                    <button onclick="returnToPlus()" type="button"
+                                                    <button onclick="returnToReservation()" type="button"
                                                         class="btn btn-light shadow-1" style="float:right;"> العودة
                                                     </button>
 
                                                 </div>
                                                 <div class="col-6">
 
-                                                    <button onclick="nextToReservation()" type="button"
+                                                    <button @click="postData()" type="button"
                                                         class="btn btn-success shadow-1" style="float: left;"> تأكيد الحجز
                                                     </button>
 
@@ -304,6 +381,13 @@
 
                                             </div>
                                         </section>
+                                </section>
+                                <section id="personal-success" style="display: none">
+                                    <h3 class="text-center"> تم تأكيد التسجيل بنجاح </h3>
+
+
+                                    <img src="{{ url('images/succes.png') }}"
+                                        style="display: block;margin:auto;margin-top:4%;" />
                                 </section>
                                 </form>
 
@@ -319,6 +403,64 @@
 
 
         <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    first_name: '',
+                    last_name: '',
+                    phone: '',
+                    email: '',
+                    ticket: '',
+                    nb_person: '',
+                    nationality: '',
+                    residance: '',
+                    password: ''
+
+
+                    // This is the variable bound to the input
+                },
+                methods: {
+                    postData() {
+
+
+                        const postData = {
+                            last_name: this.last_name,
+                            first_name: this.first_name,
+                            nationality: this.nationality,
+                            nb_person: this.nb_person,
+                            ticket_type: this.ticket,
+                            phone: this.phone,
+                            email: this.email,
+                            residance: this.residance,
+                            password: this.password
+                        };
+                        var sectionReservationData = document.getElementById("personal-success");
+                        var sectionPersonalUmrah = document.getElementById("personal-revision");
+                        sectionPersonalUmrah.style.display = "none";
+                        sectionReservationData.style.display = "block";
+                        fetch('/api/bookingtachira', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                    // Add any other headers if needed
+                                },
+                                body: JSON.stringify(postData)
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Success:', data);
+                                // Handle the response data
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                // Handle errors
+                            });
+
+                        console.log('dsdsdsd');
+
+                    }
+                },
+            });
             // ------------step-wizard-------------
             function nextToReservation() {
 
@@ -355,13 +497,15 @@
             function returnToReservation() {
 
 
-                var sectionReservationData = document.getElementById("personal-reservation");
-                var sectionPersonalUmrah = document.getElementById("personal-umrah");
-                sectionPersonalUmrah.style.display = "none";
-                sectionReservationData.style.display = "block";
+                var sectionReservationData = document.getElementById("personal-revision");
+                var sectionPersonalUmrah = document.getElementById("personal-reservation");
+                sectionPersonalUmrah.style.display = "block";
+                sectionReservationData.style.display = "none";
 
 
             }
+
+
 
             function nextToPlus() {
 
@@ -385,6 +529,10 @@
             }
 
             function nextToRevision() {
+
+                //add stock 
+
+
 
 
                 var sectionPlusData = document.getElementById("personal-reservation");
@@ -428,12 +576,22 @@
                         .catch(error => console.error('Error fetching data:', error));
                 }
 
+                function fetchDataVisas() {
+                    fetch('/api/getvisastypes') // Replace with your API endpoint
+                        .then(response => response.json())
+                        .then(data => populateSelectVisas(data))
+                        .catch(error => console.error('Error fetching data:', error));
+                }
+
+
+
                 function fetchDataVillages() {
                     fetch('/api/getvillages') // Replace with your API endpoint
                         .then(response => response.json())
                         .then(data => populateSelectVillages(data))
                         .catch(error => console.error('Error fetching data:', error));
                 }
+
 
 
                 // Function to populate the select element with data
@@ -480,6 +638,27 @@
                             .file_path); // Assuming there is an imagePath property
 
                         selectElement.add(option);
+                    });
+                }
+
+                function populateSelectVisas(data) {
+                    const selectElementTicket = document.getElementById('mySelectVisas');
+
+                    // Clear existing options
+                    selectElementTicket.innerHTML = '';
+
+                    // Add a default option
+                    const defaultOption = document.createElement('option');
+                    defaultOption.text = '  اختر التأشيرة ';
+                    selectElementTicket.add(defaultOption);
+
+                    // Add options from the fetched data
+                    data.forEach(item => {
+                        const option = document.createElement('option');
+                        option.value = item.id; // Use a unique identifier from your data
+                        option.text = item.title; // Use a property from your data
+
+                        selectElementTicket.add(option);
                     });
                 }
 

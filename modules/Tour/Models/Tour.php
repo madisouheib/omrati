@@ -70,6 +70,7 @@ class Tour extends Bookable
         'start_date',
         'end_date',
         'last_booking_date',
+        'type'
     ];
     protected $slugField                          = 'slug';
     protected $slugFromField                      = 'title';

@@ -6,12 +6,19 @@ use Modules\Hotel\Models\Hotel;
 use Modules\Location\Models\LocationCategory;
 use Modules\Page\Models\Page;
 use Modules\News\Models\NewsCategory;
+use Modules\Booking\Events\BookingCreatedEvent;
 use Modules\News\Models\Tag;
+use Illuminate\Support\Facades\Log;
 use Modules\News\Models\News;
 use Modules\Location\Models\Location;
 use Modules\Booking\Models\Booking;
+use Modules\Tour\Models\Tour;
+use Modules\Booking\Models\BookingPassenger;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Auth\Events\Registered;
+use Modules\User\Events\SendMailUserRegistered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -156,24 +163,115 @@ return response()->json($data);
 
     }
 
-    public function createBooking(Request $request){
+    public function bookingTachira(Request $request){
 
-      $booking  =  $this->booking ;
+    //$vendor = $request->user()->id;
+    $booking  =  $this->booking ;
     $booking->first_name = $request->input('first_name');
     $booking->last_name = $request->input('last_name');
     $booking->email = $request->input('email');
     $booking->phone = $request->input('phone');
-    $booking->address = $request->input('address_line_1');
-    $booking->address2 = $request->input('address_line_2');
-    $booking->city = $request->input('city');
-    $booking->state = $request->input('state');
-    $booking->zip_code = $request->input('zip_code');
-    $booking->country = $request->input('country');
-    $booking->customer_notes = $request->input('customer_notes');
-    $booking->gateway = $payment_gateway;
-    $booking->wallet_credit_used = floatval($credit);
-    $booking->wallet_total_used = floatval($wallet_total_used);
-    $booking->pay_now = floatval((int)$booking->deposit == null ? $booking->total : (int)$booking->deposit);
+   
+    $booking->city = $request->input('residance');
+    //$booking->state = $request->input('state');
+    //$booking->zip_code = $request->input('zip_code');
+    $booking->country = $request->input('nationality');
+    $booking->total_guests =  $request->input('nb_person'); 
+    $booking->object_id =   $request->input('ticket_type');
+    $booking->object_model =   'tour';
+    $booking->gateway =  'offline_payment'; 
+    $booking->gateway =  'offline_payment'; 
+    $booking->status = 'processing';
+    $booking->customer_notes = $request->input('ticket_type');
+
+
+    $this->checkOrCreate($request) ; 
+  $this->savePassengers($booking,$request);
+    //$booking->gateway = $payment_gateway;
+   // $booking->wallet_credit_used = floatval($credit);
+   // $booking->wallet_total_used = floatval($wallet_total_used);
+    //$booking->pay_now = floatval((int)$booking->deposit == null ? $booking->total : (int)$booking->deposit);
+    event(new BookingCreatedEvent($booking));
+    $booking->save();
+
+    return response()->json(true);
+
+    }
+
+    public function checkOrCreate($request){
+
+
+
+        if(Auth::check()) {
+            $user = auth()->user();
+            $user->first_name = $request->input('first_name');
+            $user->last_name = $request->input('last_name');
+            $user->phone = $request->input('phone');
+            $user->address = $request->input('address_line_1');
+            $user->address2 = $request->input('address_line_2');
+            $user->city = $request->input('city');
+            $user->state = $request->input('state');
+            $user->zip_code = $request->input('zip_code');
+            $user->country = $request->input('country');
+            $user->save();
+
+        }elseif (!empty($confirmRegister)){
+
+            $user = new User();
+            $user->first_name = $request->input('first_name');
+            $user->last_name = $request->input('last_name');
+            $user->email = $request->input('email');
+            $user->phone = $request->input('phone');
+            $user->address = $request->input('address_line_1');
+            $user->address2 = $request->input('address_line_2');
+            $user->city = $request->input('city');
+            $user->state = $request->input('state');
+            $user->zip_code = $request->input('zip_code');
+            $user->country = $request->input('country');
+            $user->password = bcrypt($request->input('password'));
+            $user->save();
+            event(new Registered($user));
+            Auth::loginUsingId($user->id);
+            try {
+                event(new SendMailUserRegistered($user));
+            } catch (\Matrix\Exception $exception) {
+                Log::warning("SendMailUserRegistered: " . $exception->getMessage());
+            }
+            $user->assignRole(setting_item('user_role'));
+        }
+
+    }
+
+    protected function savePassengers(Booking $booking,Request $request){
+        $booking->passengers()->delete();
+        if($totalPassenger = $booking->calTotalPassenger())
+        {
+            $input = $request->input('passengers',[]);
+            for($i = 1 ; $i <= $totalPassenger ; $i ++)
+            {
+                $passenger = new BookingPassenger();
+                $data = [
+                    'booking_id'=>$booking->id,
+                    'first_name'=>$input[$i]['first_name'] ?? '',
+                    'last_name'=>$input[$i]['last_name'] ?? '',
+                    'email'=>$input[$i]['email'] ?? '',
+                    'phone'=>$input[$i]['phone'] ?? '',
+                ];
+                $passenger->fillByAttr(array_keys($data),$data);
+                $passenger->save();
+            }
+        }
+    }
+
+    public function getVisas(){
+
+        $data = Tour::select('bravo_tours.*')
+        ->where('type',1)
+        ->get();
+        
+        
+        
+        return response()->json($data);
 
 
     }
