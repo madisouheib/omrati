@@ -422,6 +422,10 @@
                 created() {
 
                     this.fetchDataMekkah();
+                    this.fetchDataMadina();
+                    this.fetchDataVisas();
+                    this.fetchDataVillages();
+
                 },
                 methods: {
                     postData() {
@@ -684,35 +688,8 @@
 
                 console.log('hi there ');
 
-                function fetchDataMekkah() {
-                    fetch('/api/getmadinahotels') // Replace with your API endpoint
-                        .then(response => response.json())
-                        .then(data => populateSelect(data))
-                        .catch(error => console.error('Error fetching data:', error));
-                }
-
-                function fetchDataMadina() {
-                    fetch('/api/getmadinahotels') // Replace with your API endpoint
-                        .then(response => response.json())
-                        .then(data => populateSelectMadina(data))
-                        .catch(error => console.error('Error fetching data:', error));
-                }
-
-                function fetchDataVisas() {
-                    fetch('/api/getvisastypes') // Replace with your API endpoint
-                        .then(response => response.json())
-                        .then(data => populateSelectVisas(data))
-                        .catch(error => console.error('Error fetching data:', error));
-                }
 
 
-
-                function fetchDataVillages() {
-                    fetch('/api/getvillages') // Replace with your API endpoint
-                        .then(response => response.json())
-                        .then(data => populateSelectVillages(data))
-                        .catch(error => console.error('Error fetching data:', error));
-                }
 
 
 
@@ -721,10 +698,7 @@
 
 
                 // Fetch data and populate the select element
-                fetchDataMekkah();
-                fetchDataMadina();
-                fetchDataVillages();
-                fetchDataVisas();
+
 
 
             });
