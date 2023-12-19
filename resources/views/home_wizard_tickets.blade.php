@@ -419,6 +419,10 @@
 
                     // This is the variable bound to the input
                 },
+                created() {
+
+                    this.fetchDataMekkah();
+                },
                 methods: {
                     postData() {
 
@@ -458,6 +462,12 @@
 
                         console.log('dsdsdsd');
 
+                    },
+                    fetchDataMekkah() {
+                        fetch('/api/getmadinahotels') // Replace with your API endpoint
+                            .then(response => response.json())
+                            .then(data => populateSelect(data))
+                            .catch(error => console.error('Error fetching data:', error));
                     }
                 },
             });
