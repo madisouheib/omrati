@@ -466,9 +466,121 @@
                     fetchDataMekkah() {
                         fetch('/api/getmadinahotels') // Replace with your API endpoint
                             .then(response => response.json())
-                            .then(data => populateSelect(data))
+                            .then(data => this.populateSelect(data))
                             .catch(error => console.error('Error fetching data:', error));
+                    },
+                    fetchDataMadina() {
+                        fetch('/api/getmadinahotels') // Replace with your API endpoint
+                            .then(response => response.json())
+                            .then(data => this.populateSelectMadina(data))
+                            .catch(error => console.error('Error fetching data:', error));
+                    },
+                    fetchDataVisas() {
+                        fetch('/api/getvisastypes') // Replace with your API endpoint
+                            .then(response => response.json())
+                            .then(data => this.populateSelectVisas(data))
+                            .catch(error => console.error('Error fetching data:', error));
+                    },
+                    fetchDataVillages() {
+                        fetch('/api/getvillages') // Replace with your API endpoint
+                            .then(response => response.json())
+                            .then(data => this.populateSelectVillages(data))
+                            .catch(error => console.error('Error fetching data:', error));
+                    },
+                    // Function to populate the select element with data
+                    populateSelect(data) {
+                        const selectElementMekkah = document.getElementById('mySelectMekkah');
+
+                        // Clear existing options
+                        selectElementMekkah.innerHTML = '';
+
+                        // Add a default option
+                        const defaultOption = document.createElement('option');
+                        defaultOption.text = 'فندق مدينة مكة ';
+                        selectElementMekkah.add(defaultOption);
+
+                        // Add options from the fetched data
+                        data.forEach(item => {
+                            const option = document.createElement('option');
+                            option.value = item.id; // Use a unique identifier from your data
+                            option.text = item.title; // Use a property from your data
+                            option.setAttribute('data-image', baseUrl + '/uploads/' + item
+                                .file_path); // Assuming there is an imagePath property
+
+                            selectElementMekkah.add(option);
+                        });
                     }
+
+                    ,
+                    populateSelectMadina(data) {
+                        const selectElement = document.getElementById('mySelectMadina');
+
+                        // Clear existing options
+                        selectElement.innerHTML = '';
+
+                        // Add a default option
+                        const defaultOption = document.createElement('option');
+                        defaultOption.text = 'فندق مدينة المنورة ';
+                        selectElement.add(defaultOption);
+
+                        // Add options from the fetched data
+                        data.forEach(item => {
+                            const option = document.createElement('option');
+                            option.value = item.id; // Use a unique identifier from your data
+                            option.text = item.title; // Use a property from your data
+                            option.setAttribute('data-image', baseUrl + '/uploads/' + item
+                                .file_path); // Assuming there is an imagePath property
+
+                            selectElement.add(option);
+                        });
+                    }
+
+                    ,
+                    populateSelectVisas(data) {
+                        const selectElementTicket = document.getElementById('mySelectVisas');
+
+                        // Clear existing options
+                        selectElementTicket.innerHTML = '';
+
+                        // Add a default option
+                        const defaultOption = document.createElement('option');
+                        defaultOption.text = '  اختر التأشيرة ';
+                        selectElementTicket.add(defaultOption);
+
+                        // Add options from the fetched data
+                        data.forEach(item => {
+                            const option = document.createElement('option');
+                            option.value = item.id; // Use a unique identifier from your data
+                            option.text = item.title; // Use a property from your data
+
+                            selectElementTicket.add(option);
+                        });
+                    }
+
+                    ,
+                    populateSelectVillages(data) {
+                        const selectElementTowns = document.getElementById('mySelectVillages');
+
+                        // Clear existing options
+                        selectElementTowns.innerHTML = '';
+
+                        // Add a default option
+                        const defaultOption = document.createElement('option');
+                        defaultOption.text = '  اختر الجنسية ';
+                        selectElementTowns.add(defaultOption);
+
+                        // Add options from the fetched data
+                        data.forEach(items => {
+                            const option = document.createElement('option');
+                            option.value = items.id; // Use a unique identifier from your data
+                            option.text = items.name; // Use a property from your data
+
+
+                            selectElementTowns.add(option);
+                        });
+                    }
+
+
                 },
             });
             // ------------step-wizard-------------
@@ -604,95 +716,7 @@
 
 
 
-                // Function to populate the select element with data
-                function populateSelect(data) {
-                    const selectElementMekkah = document.getElementById('mySelectMekkah');
 
-                    // Clear existing options
-                    selectElementMekkah.innerHTML = '';
-
-                    // Add a default option
-                    const defaultOption = document.createElement('option');
-                    defaultOption.text = 'فندق مدينة مكة ';
-                    selectElementMekkah.add(defaultOption);
-
-                    // Add options from the fetched data
-                    data.forEach(item => {
-                        const option = document.createElement('option');
-                        option.value = item.id; // Use a unique identifier from your data
-                        option.text = item.title; // Use a property from your data
-                        option.setAttribute('data-image', baseUrl + '/uploads/' + item
-                            .file_path); // Assuming there is an imagePath property
-
-                        selectElementMekkah.add(option);
-                    });
-                }
-
-                function populateSelectMadina(data) {
-                    const selectElement = document.getElementById('mySelectMadina');
-
-                    // Clear existing options
-                    selectElement.innerHTML = '';
-
-                    // Add a default option
-                    const defaultOption = document.createElement('option');
-                    defaultOption.text = 'فندق مدينة المنورة ';
-                    selectElement.add(defaultOption);
-
-                    // Add options from the fetched data
-                    data.forEach(item => {
-                        const option = document.createElement('option');
-                        option.value = item.id; // Use a unique identifier from your data
-                        option.text = item.title; // Use a property from your data
-                        option.setAttribute('data-image', baseUrl + '/uploads/' + item
-                            .file_path); // Assuming there is an imagePath property
-
-                        selectElement.add(option);
-                    });
-                }
-
-                function populateSelectVisas(data) {
-                    const selectElementTicket = document.getElementById('mySelectVisas');
-
-                    // Clear existing options
-                    selectElementTicket.innerHTML = '';
-
-                    // Add a default option
-                    const defaultOption = document.createElement('option');
-                    defaultOption.text = '  اختر التأشيرة ';
-                    selectElementTicket.add(defaultOption);
-
-                    // Add options from the fetched data
-                    data.forEach(item => {
-                        const option = document.createElement('option');
-                        option.value = item.id; // Use a unique identifier from your data
-                        option.text = item.title; // Use a property from your data
-
-                        selectElementTicket.add(option);
-                    });
-                }
-
-                function populateSelectVillages(data) {
-                    const selectElementTowns = document.getElementById('mySelectVillages');
-
-                    // Clear existing options
-                    selectElementTowns.innerHTML = '';
-
-                    // Add a default option
-                    const defaultOption = document.createElement('option');
-                    defaultOption.text = '  اختر الجنسية ';
-                    selectElementTowns.add(defaultOption);
-
-                    // Add options from the fetched data
-                    data.forEach(items => {
-                        const option = document.createElement('option');
-                        option.value = items.id; // Use a unique identifier from your data
-                        option.text = items.name; // Use a property from your data
-
-
-                        selectElementTowns.add(option);
-                    });
-                }
 
 
 
