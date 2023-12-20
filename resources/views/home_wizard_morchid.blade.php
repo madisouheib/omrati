@@ -116,7 +116,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <div class="container mt-4">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <div class="container mt-4" id="app">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -150,25 +151,32 @@
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> الاسم</label>
-                                                    <input type="text" name="name" class="form-control ps-5"
-                                                        placeholder="محمد" />
+                                                    <input type="text" name="last_name" v-model="first_name"
+                                                        class="form-control ps-5" placeholder="محمد" />
                                                     <i class="fas fa-user ms-3"></i>
                                                 </div>
                                             </div>
-
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> كلمة المرور</label>
+                                                    <input type="password" name="password" v-model="password"
+                                                        class="form-control ps-5" placeholder="كلمة المرور" />
+                                                    <i class="fas fa-lock ms-3"></i>
+                                                </div>
+                                            </div>
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> اللقب</label>
-                                                    <input type="text" name="lastname" class="form-control ps-5"
-                                                        placeholder="اندلسي" />
+                                                    <input type="text" name="last_name" v-model="last_name"
+                                                        class="form-control ps-5" placeholder="اندلسي" />
                                                     <i class="fas fa-user ms-3"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> البريد الالكتروني</label>
-                                                    <input type="email" name="email" class="form-control ps-5"
-                                                        placeholder="البريد الالكتروني " />
+                                                    <input type="email" name="email" v-model="email"
+                                                        class="form-control ps-5" placeholder="البريد الالكتروني " />
                                                     <i class="fas fa-envelope ms-3"></i>
                                                 </div>
                                             </div>
@@ -176,8 +184,8 @@
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> رقم الهاتف</label>
-                                                    <input type="number" name="phone" class="form-control ps-5"
-                                                        placeholder="+1 34 43 43 " />
+                                                    <input type="number" name="phone" v-model="phone"
+                                                        class="form-control ps-5" placeholder="+1 34 43 43 " />
                                                     <i class="fas fa-phone ms-3"></i>
                                                 </div>
                                             </div>
@@ -192,6 +200,92 @@
                                                 <div class="col-6">
 
                                                     <button onclick="nextToReservation()" type="button"
+                                                        class="btn btn-success shadow-1" style="float: left;">
+                                                        مواصلة
+                                                    </button>
+
+                                                </div>
+
+
+                                            </div>
+                                        </section>
+                                </section>
+                                <section id="personal-reservation" style="display: none">
+                                    <h3> معلومات الحجز</h3>
+                                    <form>
+                                        <div class="row p4">
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> عدد الأشخاص</label>
+                                                    <input type="number" name="nb_person" class="form-control ps-5"
+                                                        placeholder="عدد الأشخاص" />
+                                                    <i class="fas fa-plus ms-3"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;" v-model="nationality"> الجنسية</label>
+                                                    <select class="form-control" id="mySelectVillages">
+
+                                                    </select>
+
+
+                                                    <i class="fas fa-flag ms-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> خدمات المرشد او المرافق </label>
+
+
+                                                    <select class="form-control" v-model="mazaret">
+
+                                                        <option v-for="mazar in list_mazart" :key="mazar.id">
+                                                            @{{ mazar.title }} </option>
+
+
+                                                    </select>
+                                                    <i class="fas fa-users-rays ms-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> مرشد لاداء مناسك</label>
+
+
+                                                    <select class="form-control" v-model="mazaret">
+
+                                                        <option v-for="mazar in list_mazart" :key="mazar.id">
+                                                            @{{ mazar.title }} </option>
+
+
+                                                    </select>
+                                                    <i class="fas fa-hotel ms-3"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> مكان الاقامة</label>
+                                                    <input v-model="residance" type="text"
+                                                        class="form-control ps-5" />
+                                                    <i class="fas fa-map ms-3"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <section id="panel-switch mt-4" style="margin-top:3%;">
+                                            <div class="row mt-2">
+                                                <div class="col-6">
+                                                    <button onclick="returnToPersonal()" type="button"
+                                                        class="btn btn-light shadow-1" style="float:right;"> العودة
+                                                    </button>
+
+                                                </div>
+                                                <div class="col-6">
+
+                                                    <button onclick="nextToRevision()" type="button"
                                                         class="btn btn-success shadow-1" style="float: left;"> مواصلة
                                                     </button>
 
@@ -209,7 +303,8 @@
                                         <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                             <div class="form-outline">
                                                 <label style="font-weight: bold;"> عدد الأشخاص</label>
-                                                <input type="number" class="form-control ps-5" placeholder="عدد الأشخاص" />
+                                                <input type="number" class="form-control ps-5"
+                                                    placeholder="عدد الأشخاص" />
                                                 <i class="fas fa-plus ms-3"></i>
                                             </div>
                                         </div>
@@ -243,11 +338,11 @@
                                                 <label style="font-weight: bold;"> خدمات المرشد او المرافق </label>
 
 
-                                                <select class="form-control">
-                                                    <option> 1-5 مزارات المدينة او مزارات مكة 100$ </option>
-                                                    <option> 6-10 مزارات المدينة او مزارات مكة 150$ </option>
-                                                    <option> 11-20 مزارات المدينة او مزارات مكة 200$</option>
-                                                    <option> 21-49 مزارات المدينة او مزارات مكة 250$ </option>
+                                                <select class="form-control" v-model="mazaret">
+
+                                                    <option v-for="mazar in list_mazart" :key="mazar.id">
+                                                        @{{ mazar.title }} </option>
+
 
                                                 </select>
                                                 <i class="fas fa-hotel ms-3"></i>
@@ -260,15 +355,14 @@
                                                 <label style="font-weight: bold;">
                                                     مرشد لاداء مناسك
                                                 </label>
-                                                <select class="form-control">
+                                                <select class="form-control" v-model="nusuk">
 
-                                                    <option> 1-5 مرشد لاداء مناسك العمرة في مكة 150$ </option>
-                                                    <option> 6-10 مرشد لاداء مناسك العمرة في مكة 200$ </option>
-                                                    <option> 11-20 مرشد لاداء مناسك العمرة في مكة 250$ </option>
-                                                    <option> 21-49 مرشد لاداء مناسك العمرة في مكة 400$ </option>
+                                                    <option v-for="nusuki in list_nusuk" :key="nusuki.id">
+                                                        @{{ nusuki.title }} </option>
+
 
                                                 </select>
-                                                <i class="fas fa-hotel ms-3"></i>
+                                                <i class="fas fa-users-rays ms-3"></i>
 
                                             </div>
                                         </div>
@@ -371,7 +465,210 @@
         </div>
 
 
+
         <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    first_name: '',
+                    last_name: '',
+                    list_nusuk: {},
+                    nusuk: '',
+                    list_mazart: {},
+                    mazaret: '',
+                    phone: '',
+                    email: '',
+                    ticket: '',
+                    nb_person: '',
+                    nationality: '',
+                    residance: '',
+                    password: ''
+
+
+                    // This is the variable bound to the input
+                },
+                created() {
+
+                    this.fetchDataMekkah();
+                    this.fetchDataMadina();
+                    this.fetchDataMazarat();
+                    this.fetchDataVillages();
+                    this.fetchDataNusuk();
+
+                },
+                methods: {
+                    postData() {
+
+
+                        const postData = {
+                            last_name: this.last_name,
+                            first_name: this.first_name,
+                            nationality: this.nationality,
+                            nb_person: this.nb_person,
+                            ticket_type: this.ticket,
+                            phone: this.phone,
+                            email: this.email,
+                            residance: this.residance,
+                            password: this.password
+                        };
+                        var sectionReservationData = document.getElementById("personal-success");
+                        var sectionPersonalUmrah = document.getElementById("personal-revision");
+                        sectionPersonalUmrah.style.display = "none";
+                        sectionReservationData.style.display = "block";
+                        fetch('/api/bookingtachira', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                    // Add any other headers if needed
+                                },
+                                body: JSON.stringify(postData)
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Success:', data);
+                                // Handle the response data
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                // Handle errors
+                            });
+
+                        console.log('dsdsdsd');
+
+                    },
+                    fetchDataMekkah() {
+                        fetch('/api/getmadinahotels') // Replace with your API endpoint
+                            .then(response => response.json())
+                            .then(data => this.populateSelect(data))
+                            .catch(error => console.error('Error fetching data:', error));
+                    },
+                    fetchDataMadina() {
+                        fetch('/api/getmadinahotels') // Replace with your API endpoint
+                            .then(response => response.json())
+                            .then(data => this.populateSelectMadina(data))
+                            .catch(error => console.error('Error fetching data:', error));
+                    },
+                    fetchDataMazarat() {
+                        fetch('/api/getmazarat') // Replace with your API endpoint
+                            .then(response => {
+
+                                this.list_mazart = response.data
+
+                            })
+                            .catch(error => console.error('Error fetching data:', error));
+                    },
+                    fetchDataNusuk() {
+                        fetch('/api/getnusuk') // Replace with your API endpoint
+                            .then(response => {
+
+                                this.list_nusuk = response.data
+
+                            })
+                            .catch(error => console.error('Error fetching data:', error));
+                    },
+
+                    fetchDataVillages() {
+                        fetch('/api/getvillages') // Replace with your API endpoint
+                            .then(response => response.json())
+                            .then(data => this.populateSelectVillages(data))
+                            .catch(error => console.error('Error fetching data:', error));
+                    },
+                    // Function to populate the select element with data
+                    populateSelect(data) {
+                        const selectElementMekkah = document.getElementById('mySelectMekkah');
+
+                        // Clear existing options
+                        selectElementMekkah.innerHTML = '';
+
+                        // Add a default option
+                        const defaultOption = document.createElement('option');
+                        defaultOption.text = 'فندق مدينة مكة ';
+                        selectElementMekkah.add(defaultOption);
+
+                        // Add options from the fetched data
+                        data.forEach(item => {
+                            const option = document.createElement('option');
+                            option.value = item.id; // Use a unique identifier from your data
+                            option.text = item.title; // Use a property from your data
+                            option.setAttribute('data-image', baseUrl + '/uploads/' + item
+                                .file_path); // Assuming there is an imagePath property
+
+                            selectElementMekkah.add(option);
+                        });
+                    }
+
+                    ,
+                    populateSelectMadina(data) {
+                        const selectElement = document.getElementById('mySelectMadina');
+
+                        // Clear existing options
+                        selectElement.innerHTML = '';
+
+                        // Add a default option
+                        const defaultOption = document.createElement('option');
+                        defaultOption.text = 'فندق مدينة المنورة ';
+                        selectElement.add(defaultOption);
+
+                        // Add options from the fetched data
+                        data.forEach(item => {
+                            const option = document.createElement('option');
+                            option.value = item.id; // Use a unique identifier from your data
+                            option.text = item.title; // Use a property from your data
+                            option.setAttribute('data-image', baseUrl + '/uploads/' + item
+                                .file_path); // Assuming there is an imagePath property
+
+                            selectElement.add(option);
+                        });
+                    }
+
+                    ,
+                    populateSelectVisas(data) {
+                        const selectElementTicket = document.getElementById('mySelectVisas');
+
+                        // Clear existing options
+                        selectElementTicket.innerHTML = '';
+
+                        // Add a default option
+                        const defaultOption = document.createElement('option');
+                        defaultOption.text = '  اختر التأشيرة ';
+                        selectElementTicket.add(defaultOption);
+
+                        // Add options from the fetched data
+                        data.forEach(item => {
+                            const option = document.createElement('option');
+                            option.value = item.id; // Use a unique identifier from your data
+                            option.text = item.title; // Use a property from your data
+
+                            selectElementTicket.add(option);
+                        });
+                    }
+
+                    ,
+                    populateSelectVillages(data) {
+                        const selectElementTowns = document.getElementById('mySelectVillages');
+
+                        // Clear existing options
+                        selectElementTowns.innerHTML = '';
+
+                        // Add a default option
+                        const defaultOption = document.createElement('option');
+                        defaultOption.text = '  اختر الجنسية ';
+                        selectElementTowns.add(defaultOption);
+
+                        // Add options from the fetched data
+                        data.forEach(items => {
+                            const option = document.createElement('option');
+                            option.value = items.id; // Use a unique identifier from your data
+                            option.text = items.name; // Use a property from your data
+
+
+                            selectElementTowns.add(option);
+                        });
+                    }
+
+
+                },
+            });
             // ------------step-wizard-------------
             function nextToReservation() {
 
@@ -408,13 +705,15 @@
             function returnToReservation() {
 
 
-                var sectionReservationData = document.getElementById("personal-reservation");
-                var sectionPersonalUmrah = document.getElementById("personal-umrah");
-                sectionPersonalUmrah.style.display = "none";
-                sectionReservationData.style.display = "block";
+                var sectionReservationData = document.getElementById("personal-revision");
+                var sectionPersonalUmrah = document.getElementById("personal-reservation");
+                sectionPersonalUmrah.style.display = "block";
+                sectionReservationData.style.display = "none";
 
 
             }
+
+
 
             function nextToPlus() {
 
@@ -439,8 +738,12 @@
 
             function nextToRevision() {
 
+                //add stock 
 
-                var sectionPlusData = document.getElementById("personal-plus");
+
+
+
+                var sectionPlusData = document.getElementById("personal-reservation");
                 var sectionRevision = document.getElementById("personal-revision");
                 sectionRevision.style.display = "block";
                 sectionPlusData.style.display = "none";
@@ -465,108 +768,22 @@
                 // Function to fetch data from the API
                 const baseUrl = window.location.origin;
 
+                console.log('hi there ');
 
 
-                function fetchDataMekkah() {
-                    fetch('/api/getmadinahotels') // Replace with your API endpoint
-                        .then(response => response.json())
-                        .then(data => populateSelect(data))
-                        .catch(error => console.error('Error fetching data:', error));
-                }
-
-                function fetchDataMadina() {
-                    fetch('/api/getmadinahotels') // Replace with your API endpoint
-                        .then(response => response.json())
-                        .then(data => populateSelectMadina(data))
-                        .catch(error => console.error('Error fetching data:', error));
-                }
-
-                function fetchDataVillages() {
-                    fetch('/api/getvillages') // Replace with your API endpoint
-                        .then(response => response.json())
-                        .then(data => populateSelectVillages(data))
-                        .catch(error => console.error('Error fetching data:', error));
-                }
 
 
-                // Function to populate the select element with data
-                function populateSelect(data) {
-                    const selectElementMekkah = document.getElementById('mySelectMekkah');
-
-                    // Clear existing options
-                    selectElementMekkah.innerHTML = '';
-
-                    // Add a default option
-                    const defaultOption = document.createElement('option');
-                    defaultOption.text = 'فندق مدينة مكة ';
-                    selectElementMekkah.add(defaultOption);
-
-                    // Add options from the fetched data
-                    data.forEach(item => {
-                        const option = document.createElement('option');
-                        option.value = item.id; // Use a unique identifier from your data
-                        option.text = item.title; // Use a property from your data
-                        option.setAttribute('data-image', baseUrl + '/uploads/' + item
-                            .file_path); // Assuming there is an imagePath property
-
-                        selectElementMekkah.add(option);
-                    });
-                }
-
-                function populateSelectMadina(data) {
-                    const selectElement = document.getElementById('mySelectMadina');
-
-                    // Clear existing options
-                    selectElement.innerHTML = '';
-
-                    // Add a default option
-                    const defaultOption = document.createElement('option');
-                    defaultOption.text = 'فندق مدينة المنورة ';
-                    selectElement.add(defaultOption);
-
-                    // Add options from the fetched data
-                    data.forEach(item => {
-                        const option = document.createElement('option');
-                        option.value = item.id; // Use a unique identifier from your data
-                        option.text = item.title; // Use a property from your data
-                        option.setAttribute('data-image', baseUrl + '/uploads/' + item
-                            .file_path); // Assuming there is an imagePath property
-
-                        selectElement.add(option);
-                    });
-                }
-
-                function populateSelectVillages(data) {
-                    const selectElementTowns = document.getElementById('mySelectVillages');
-
-                    // Clear existing options
-                    selectElementTowns.innerHTML = '';
-
-                    // Add a default option
-                    const defaultOption = document.createElement('option');
-                    defaultOption.text = '  اختر الجنسية ';
-                    selectElementTowns.add(defaultOption);
-
-                    // Add options from the fetched data
-                    data.forEach(items => {
-                        const option = document.createElement('option');
-                        option.value = items.id; // Use a unique identifier from your data
-                        option.text = items.name; // Use a property from your data
 
 
-                        selectElementTowns.add(option);
-                    });
-                }
+
 
 
 
                 // Fetch data and populate the select element
-                fetchDataMekkah();
-                fetchDataMadina();
-                fetchDataVillages();
+
+
+
             });
-
-
 
             function updateImageDataMekkah() {
                 const selectElement = document.getElementById('mySelectMekkah');
@@ -590,7 +807,6 @@
                 imageElement.src = imagePath;
             }
         </script>
-
 
 
     </div>

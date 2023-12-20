@@ -23,4 +23,6 @@ Route::get('getmekkahhotels', 'HomeController@getHotelsMekkah');
 Route::get('getvillages', 'HomeController@getVillages');
 Route::get('getvisastypes', 'HomeController@getVisas');
 Route::post('bookingtachira', 'HomeController@bookingTachira');
+Route::get('getmazarat', 'HomeController@getMazarat');
+Route::get('getnusuk', 'HomeController@getNusuk');
 

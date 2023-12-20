@@ -163,6 +163,23 @@ return response()->json($data);
 
     }
 
+    public function getMazarat(){
+        $dataLocations = Tour::where('type',2)->get();
+
+
+        return response()->json($dataLocations);
+
+    }
+
+
+    public function getNusuk(){
+        $dataLocations = Tour::where('type',3)->get();
+
+
+        return response()->json($dataLocations);
+
+    }
+
     public function bookingTachira(Request $request){
 
     //$vendor = $request->user()->id;

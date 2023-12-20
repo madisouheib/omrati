@@ -202,7 +202,8 @@
                                                 <div class="col-6">
 
                                                     <button onclick="nextToReservation()" type="button"
-                                                        class="btn btn-success shadow-1" style="float: left;"> مواصلة
+                                                        class="btn btn-success shadow-1" style="float: left;">
+                                                        مواصلة
                                                     </button>
 
                                                 </div>
@@ -328,7 +329,8 @@
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> عدد الأشخاص</label>
-                                                    <input type="number" readonly class="form-control ps-5" />
+                                                    <input type="number" v-model="nb_person" readonly
+                                                        class="form-control ps-5" />
                                                     <i class="fas fa-plus ms-3"></i>
                                                 </div>
                                             </div>
