@@ -252,20 +252,20 @@
                                             </div>
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
-                                                    <label style="font-weight: bold;"> مرشد لاداء مناسك</label>
+                                                    <label style="font-weight: bold;">
+                                                        مرشد لاداء مناسك
+                                                    </label>
+                                                    <select class="form-control" v-model="nusuk">
 
-
-                                                    <select class="form-control" v-model="mazaret">
-
-                                                        <option v-for="mazar in list_mazart" :key="mazar.id">
-                                                            @{{ mazar.title }} </option>
+                                                        <option v-for="nusuki in list_nusuk" :key="nusuki.id">
+                                                            @{{ nusuki.title }} </option>
 
 
                                                     </select>
-                                                    <i class="fas fa-hotel ms-3"></i>
+                                                    <i class="fas fa-users-rays ms-3"></i>
+
                                                 </div>
                                             </div>
-
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> مكان الاقامة</label>
@@ -333,21 +333,7 @@
                                         </div>
                                         <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                         </div>
-                                        <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                            <div class="form-outline">
-                                                <label style="font-weight: bold;"> خدمات المرشد او المرافق </label>
 
-
-                                                <select class="form-control" v-model="mazaret">
-
-                                                    <option v-for="mazar in list_mazart" :key="mazar.id">
-                                                        @{{ mazar.title }} </option>
-
-
-                                                </select>
-                                                <i class="fas fa-hotel ms-3"></i>
-                                            </div>
-                                        </div>
 
 
                                         <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
@@ -550,20 +536,15 @@
                     },
                     fetchDataMazarat() {
                         fetch('/api/getmazarat') // Replace with your API endpoint
-                            .then(response => {
+                            .then(response => response.json())
+                            .then(data => this.list_mazart = data)
 
-                                this.list_mazart = response.data
-
-                            })
                             .catch(error => console.error('Error fetching data:', error));
                     },
                     fetchDataNusuk() {
                         fetch('/api/getnusuk') // Replace with your API endpoint
-                            .then(response => {
-
-                                this.list_nusuk = response.data
-
-                            })
+                            .then(response => response.json())
+                            .then(data => this.list_nusuk = data)
                             .catch(error => console.error('Error fetching data:', error));
                     },
 
