@@ -137,7 +137,7 @@
 
                         </p>
                         <div class="container mt-2">
-                            <img style="display:block;margin:auto;" src="{{ url('/images/carte-de-voyage.png') }}">
+                            <img style="display:block;margin:auto;" src="{{ url('/images/guide-touristique.png') }}">
                             <div class="card p-4" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
 
 
@@ -241,8 +241,11 @@
 
 
                                                     <select class="form-control" v-model="mazaret">
-
-                                                        <option v-for="mazar in list_mazart" :key="mazar.id">
+                                                        <option value="0">
+                                                            لا أريد
+                                                        </option>
+                                                        <option v-for="mazar in list_mazart" :value="mazar.id"
+                                                            :key="mazar.id">
                                                             @{{ mazar.title }} </option>
 
 
@@ -256,8 +259,11 @@
                                                         مرشد لاداء مناسك
                                                     </label>
                                                     <select class="form-control" v-model="nusuk">
-
-                                                        <option v-for="nusuki in list_nusuk" :key="nusuki.id">
+                                                        <option value="0">
+                                                            لا أريد
+                                                        </option>
+                                                        <option v-for="nusuki in list_nusuk" :value="nusuki.id"
+                                                            :key="nusuki.id">
                                                             @{{ nusuki.title }} </option>
 
 
@@ -295,83 +301,125 @@
                                             </div>
                                         </section>
                                 </section>
-                                <section id="personal-reservation" style="display: none">
-                                    <h3> معلومات الحجز</h3>
 
-                                    <div class="row p4">
 
-                                        <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                            <div class="form-outline">
-                                                <label style="font-weight: bold;"> عدد الأشخاص</label>
-                                                <input type="number" class="form-control ps-5"
-                                                    placeholder="عدد الأشخاص" />
-                                                <i class="fas fa-plus ms-3"></i>
+
+                                <section id="personal-revision" style="display: none">
+                                    <h3> مراجعة عامة </h3>
+                                    <form>
+                                        <div class="row p4">
+
+                                            <div class="col-md-12 col-xs-12 col-lg-12 mt-4">
+
+                                                <img class="mt-2" src="{{ url('images/check-out.png') }}"
+                                                    style="display: block;height:100px;width:100px;margin:auto;" />
                                             </div>
-                                        </div>
-
-                                        <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                            <div class="form-outline">
-                                                <label style="font-weight: bold;"> الجنسية</label>
-                                                <select class="form-control" id="mySelectVillages">
-
-
-                                                </select>
-
-
-                                                <i class="fas fa-flag ms-3"></i>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                            <div class="form-outline">
-                                                <label style="font-weight: bold;"> مكان الاقامة</label>
-                                                <input type="text" class="form-control ps-5"
-                                                    placeholder=" مكان الاقامة" />
-                                                <i class="fas fa-map ms-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                        </div>
-
-
-
-                                        <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                            <div class="form-outline">
-                                                <label style="font-weight: bold;">
-                                                    مرشد لاداء مناسك
-                                                </label>
-                                                <select class="form-control" v-model="nusuk">
-
-                                                    <option v-for="nusuki in list_nusuk" :key="nusuki.id">
-                                                        @{{ nusuki.title }} </option>
-
-
-                                                </select>
-                                                <i class="fas fa-users-rays ms-3"></i>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <section id="panel-switch mt-4" style="margin-top:3%;">
-                                        <div class="row mt-2">
-                                            <div class="col-6">
-                                                <button onclick="returnToPersonal()" type="button"
-                                                    class="btn btn-light shadow-1" style="float:right;"> العودة
-                                                </button>
-
-                                            </div>
-                                            <div class="col-6">
-
-                                                <button onclick="nextToUmrah()" type="button"
-                                                    class="btn btn-success shadow-1" style="float: left;"> مواصلة
-                                                </button>
-
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> الاسم</label>
+                                                    <input type="text" readonly class="form-control ps-5"
+                                                        v-model="first_name" readonly placeholder="محمد" />
+                                                    <i class="fas fa-user ms-3"></i>
+                                                </div>
                                             </div>
 
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> اللقب</label>
+                                                    <input type="text" readonly class="form-control ps-5"
+                                                        placeholder="اندلسي" />
+                                                    <i class="fas fa-user ms-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> البريد الالكتروني</label>
+                                                    <input type="email" v-model="email" readonly
+                                                        class="form-control ps-5" placeholder="البريد الالكتروني " />
+                                                    <i class="fas fa-envelope ms-3"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> رقم الهاتف</label>
+                                                    <input type="number" v-model="phone" readonly
+                                                        class="form-control ps-5" />
+                                                    <i class="fas fa-phone ms-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> خدمات المرشد او المرافق </label>
+                                                    <input type="number" v-model="nusuk" readonly
+                                                        class="form-control ps-5" />
+                                                    <i class="fas fa-users-rays ms-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> مرشد لاداء مناسك</label>
+                                                    <input type="number" v-model="mazaret" readonly
+                                                        class="form-control ps-5" />
+                                                    <i class="fas fa-users-rays ms-3"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> جنسية </label>
+                                                    <input type="text" v-model="nationality" readonly
+                                                        class="form-control ps-5" />
+                                                    <i class="fas fa-flag ms-3"></i>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> تأشيرة </label>
+                                                    <input type="text" v-model="ticket" readonly
+                                                        class="form-control ps-5" />
+                                                    <i class="fas fa-plane ms-3"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
+                                                <div class="form-outline">
+                                                    <label style="font-weight: bold;"> مكان الاقامة</label>
+                                                    <input type="text" v-model="residance" readonly
+                                                        class="form-control ps-5" placeholder=" مكان الاقامة" />
+                                                    <i class="fas fa-map ms-3"></i>
+                                                </div>
+                                            </div>
 
                                         </div>
-                                    </section>
+                                        <section id="panel-switch mt-4" style="margin-top:3%;">
+                                            <div class="row mt-2">
+                                                <div class="col-6">
+                                                    <button onclick="returnToReservation()" type="button"
+                                                        class="btn btn-light shadow-1" style="float:right;"> العودة
+                                                    </button>
+
+                                                </div>
+                                                <div class="col-6">
+
+                                                    <button @click="postData()" type="button"
+                                                        class="btn btn-success shadow-1" style="float: left;"> تأكيد الحجز
+                                                    </button>
+
+                                                </div>
+
+
+                                            </div>
+                                        </section>
+                                </section>
+                                <section id="personal-success" style="display: none">
+                                    <h3 class="text-center"> تم تأكيد التسجيل بنجاح </h3>
+
+
+                                    <img src="{{ url('images/succes.png') }}"
+                                        style="display: block;margin:auto;margin-top:4%;" />
                                 </section>
                                 <section id="personal-umrah" style="display: none;">
                                     <h3> حجز مرشد </h3>
@@ -491,7 +539,8 @@
                             first_name: this.first_name,
                             nationality: this.nationality,
                             nb_person: this.nb_person,
-                            ticket_type: this.ticket,
+                            morchid_nusuk: this.nusuk,
+                            morchid_mazaret: this.mazaret,
                             phone: this.phone,
                             email: this.email,
                             residance: this.residance,
@@ -501,7 +550,7 @@
                         var sectionPersonalUmrah = document.getElementById("personal-revision");
                         sectionPersonalUmrah.style.display = "none";
                         sectionReservationData.style.display = "block";
-                        fetch('/api/bookingtachira', {
+                        fetch('/api/bookingmorchid', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json'

@@ -214,7 +214,90 @@ return response()->json($data);
     return response()->json(true);
 
     }
+public function bookingMorchid(Request $request){
 
+    $checkUser = false ; 
+
+    if($request->input('morchid_mazart') !== 0){
+ //$vendor = $request->user()->id;
+ $checkUser = true ; 
+ $booking  =  $this->booking ;
+ $booking->first_name = $request->input('first_name');
+ $booking->last_name = $request->input('last_name');
+ $booking->email = $request->input('email');
+ $booking->phone = $request->input('phone');
+
+ $booking->city = $request->input('residance');
+ //$booking->state = $request->input('state');
+ //$booking->zip_code = $request->input('zip_code');
+ $booking->country = $request->input('nationality');
+ $booking->total_guests =  $request->input('nb_person'); 
+ $booking->object_id =   $request->input('morchid_mazart');
+ $booking->object_model =   'tour';
+ $booking->gateway =  'offline_payment'; 
+ $booking->gateway =  'offline_payment'; 
+ $booking->status = 'processing';
+
+ $booking->customer_notes = $request->input('morchid_mazart');
+
+
+ $this->checkOrCreate($request) ; 
+$this->savePassengers($booking,$request);
+ //$booking->gateway = $payment_gateway;
+// $booking->wallet_credit_used = floatval($credit);
+// $booking->wallet_total_used = floatval($wallet_total_used);
+ //$booking->pay_now = floatval((int)$booking->deposit == null ? $booking->total : (int)$booking->deposit);
+ event(new BookingCreatedEvent($booking));
+ $booking->save();
+
+
+    }
+
+
+
+    if($request->input('morchid_nusuk') !== 0){
+ //$vendor = $request->user()->id;
+ $booking  =  $this->booking ;
+ $booking->first_name = $request->input('first_name');
+ $booking->last_name = $request->input('last_name');
+ $booking->email = $request->input('email');
+ $booking->phone = $request->input('phone');
+
+ $booking->city = $request->input('residance');
+ //$booking->state = $request->input('state');
+ //$booking->zip_code = $request->input('zip_code');
+ $booking->country = $request->input('nationality');
+ $booking->total_guests =  $request->input('nb_person'); 
+ $booking->object_id =   $request->input('morchid_nusuk');
+ $booking->object_model =   'tour';
+ $booking->gateway =  'offline_payment'; 
+ $booking->gateway =  'offline_payment'; 
+ $booking->status = 'processing';
+
+ $booking->customer_notes = $request->input('morchid_nusuk');
+
+if($checkUser == false ){
+
+    $this->checkOrCreate($request) ; 
+
+}
+
+$this->savePassengers($booking,$request);
+ //$booking->gateway = $payment_gateway;
+// $booking->wallet_credit_used = floatval($credit);
+// $booking->wallet_total_used = floatval($wallet_total_used);
+ //$booking->pay_now = floatval((int)$booking->deposit == null ? $booking->total : (int)$booking->deposit);
+ event(new BookingCreatedEvent($booking));
+ $booking->save();
+
+
+    }
+
+ return response()->json(true);
+
+
+
+}
     public function checkOrCreate($request){
 
 
