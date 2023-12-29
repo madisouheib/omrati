@@ -158,14 +158,7 @@
                                                     <i class="fas fa-user ms-3"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
-                                                <div class="form-outline">
-                                                    <label style="font-weight: bold;"> كلمة المرور</label>
-                                                    <input type="password" name="password" v-model="password"
-                                                        class="form-control ps-5" placeholder="كلمة المرور" />
-                                                    <i class="fas fa-lock ms-3"></i>
-                                                </div>
-                                            </div>
+
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> اللقب</label>
@@ -254,8 +247,7 @@
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> مكان الاقامة</label>
-                                                    <input v-model="residance" type="text"
-                                                        class="form-control ps-5" />
+                                                    <input v-model="residance" type="text" class="form-control ps-5" />
                                                     <i class="fas fa-map ms-3"></i>
                                                 </div>
                                             </div>

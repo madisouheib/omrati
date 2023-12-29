@@ -13,6 +13,7 @@ use Modules\News\Models\News;
 use Modules\Location\Models\Location;
 use Modules\Booking\Models\Booking;
 use Modules\Tour\Models\Tour;
+use Modules\Car\Models\Car;
 use Modules\Booking\Models\BookingPassenger;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Auth\Events\Registered;
@@ -177,6 +178,13 @@ return response()->json($data);
 
 
         return response()->json($dataLocations);
+
+    }
+    public function getCars(){
+
+        $dataCars = Car::get();
+
+return response()->json($dataCars);
 
     }
 
