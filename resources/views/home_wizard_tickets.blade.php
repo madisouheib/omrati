@@ -441,7 +441,7 @@
                         var sectionPersonalUmrah = document.getElementById("personal-revision");
                         sectionPersonalUmrah.style.display = "none";
                         sectionReservationData.style.display = "block";
-                        fetch('/api/bookingtachira', {
+                        fetch('/api/bookingomrah', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json'
