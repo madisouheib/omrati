@@ -281,8 +281,7 @@
                                                 <label style="font-weight: bold;"> فندق مكة</label>
 
 
-                                                <select class="form-control"
-                                                    @change="updateImageDataImage(hotelmak.file_path)"
+                                                <select class="form-control" @change="updateImageDataImage()"
                                                     id="mySelectMekkah">
                                                     <option v-for="hotelmak in list_mekkah" :value="hotelmak.id"
                                                         :key="hotelmak.id">
@@ -505,7 +504,7 @@
                                             </div>
                                             <div class="col-6">
 
-                                                <button onclick="postData()" type="button"
+                                                <button @click="postData()" type="button"
                                                     class="btn btn-success shadow-1" type="submit" name="valid"
                                                     style="float: left;">
                                                     تأكيد الحجز
