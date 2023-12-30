@@ -370,7 +370,9 @@
                                                             اختر وسيلة النقل
                                                         </label>
                                                         <select class="form-control" id="mySelectCars">
-
+                                                            <option v-for="car in list_cars" :value="car.id"
+                                                                :key="car.id">
+                                                                @{{ car.title }} </option>
                                                         </select>
                                                         <i class="fas fa-hotel ms-3"></i>
 
@@ -535,6 +537,7 @@
                     first_name: document.getElementById("first_name").value,
                     list_madina: {},
                     list_mekkah: {},
+                    list_cars: {},
                     last_name: document.getElementById("last_name").value,
                     ticket: false,
                     phone: document.getElementById("phone").value,
@@ -642,7 +645,7 @@
                     fetchDataCars() {
                         fetch('/api/getcars') // Replace with your API endpoint
                             .then(response => response.json())
-                            .then(data => this.populateSelectCars(data))
+                            .then(data => this.list_cars = data)
                             .catch(error => console.error('Error fetching data:', error));
                     },
                     fetchDataVillages() {
