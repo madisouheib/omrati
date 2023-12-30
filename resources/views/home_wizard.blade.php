@@ -304,9 +304,12 @@
                                                 </label>
                                                 <select class="form-control" id="mySelectMadina"
                                                     onchange="updateImageDataMadina()">
-
+                                                    <option v-for="hotelmad in list_madina" :value="hotelmad.id"
+                                                        :key="hotelmad.id">
+                                                        @{{ hotelmad.title }} </option>
 
                                                 </select>
+
                                                 <i class="fas fa-hotel ms-3"></i>
 
                                             </div>
@@ -527,6 +530,7 @@
                 el: '#app',
                 data: {
                     first_name: document.getElementById("first_name").value,
+                    list_madina: {},
                     last_name: document.getElementById("last_name").value,
                     ticket: false,
                     phone: document.getElementById("phone").value,
@@ -611,7 +615,8 @@
                     fetchDataMadina() {
                         fetch('/api/getmadinahotels') // Replace with your API endpoint
                             .then(response => response.json())
-                            .then(data => this.populateSelectMadina(data))
+                            .then(data => this.list_madina = data)
+
                             .catch(error => console.error('Error fetching data:', error));
                     },
                     enableSection() {
