@@ -112,7 +112,7 @@
             background: #68e870;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -426,7 +426,7 @@
 
 
                         const postData = {
-                            last_name: this.last_name,
+                            last_name: document.getElementById("last_name").value,
                             first_name: this.first_name,
                             nationality: this.nationality,
                             nb_person: this.nb_person,
@@ -464,7 +464,7 @@
                     fetchDataMekkah() {
                         fetch('/api/getmadinahotels') // Replace with your API endpoint
                             .then(response => response.json())
-                            .then(data => this.populateSelect(data))
+                            .then(data => this.populateSelectMekkah(data))
                             .catch(error => console.error('Error fetching data:', error));
                     },
                     fetchDataMadina() {
@@ -486,7 +486,7 @@
                             .catch(error => console.error('Error fetching data:', error));
                     },
                     // Function to populate the select element with data
-                    populateSelect(data) {
+                    populateSelectMekkah(data) {
                         const selectElementMekkah = document.getElementById('mySelectMekkah');
 
                         // Clear existing options

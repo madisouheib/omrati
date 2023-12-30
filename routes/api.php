@@ -26,7 +26,10 @@ Route::get('getcars', 'HomeController@getCars');
 
 Route::post('bookingtachira', 'HomeController@bookingTachira');
 Route::post('bookingmorchid', 'HomeController@bookingMorchid');
-
+Route::post('bookingomrah', 'HomeController@bookingOmrah');
 Route::get('getmazarat', 'HomeController@getMazarat');
 Route::get('getnusuk', 'HomeController@getNusuk');
+
+
+
 
