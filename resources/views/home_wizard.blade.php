@@ -578,7 +578,7 @@
                             nationality: document.getElementById("mySelectVillages").value,
                             nb_person: document.getElementById("nb_person").value,
                             car: document.getElementById("mycar").value,
-                            ticket_type: document.getElementById("ticket").value,
+
                             hotel_madina: document.getElementById("mySelectMadina").value,
                             hotel_mekkah: document.getElementById("mySelectMekkah").value,
                             residance: document.getElementById("residance").value,
