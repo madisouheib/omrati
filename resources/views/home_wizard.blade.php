@@ -577,7 +577,7 @@
 
                             nationality: document.getElementById("mySelectVillages").value,
                             nb_person: document.getElementById("nb_person").value,
-                            car: document.getElementById("mySelectCars").value,
+                            car: document.getElementById("mycar").value,
                             ticket_type: document.getElementById("ticket").value,
                             hotel_madina: document.getElementById("mySelectMadina").value,
                             hotel_mekkah: document.getElementById("mySelectMekkah").value,
@@ -691,7 +691,7 @@
                         data.forEach(item => {
                             const option = document.createElement('option');
                             option.value = item.id; // Use a unique identifier from your data
-                            option.text = item.title; // Use a property from your data
+                            option.text = item.title; // Use a carproperty from your data
                             option.setAttribute('data-image', baseUrl + '/uploads/' + item
                                 .file_path); // Assuming there is an imagePath property
 
