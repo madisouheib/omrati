@@ -532,7 +532,6 @@
                     phone: document.getElementById("phone").value,
                     enable_section: 0,
                     email: document.getElementById("email").value,
-                    ticket: document.getElementById("ticket").value,
                     car: document.getElementById("mySelectCars").value,
                     nb_person: document.getElementById("nb_person").value,
                     nationality: document.getElementById("mySelectVillages").value,
