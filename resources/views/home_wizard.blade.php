@@ -369,7 +369,7 @@
                                                         <label style="font-weight: bold;">
                                                             اختر وسيلة النقل
                                                         </label>
-                                                        <select class="form-control" id="mySelectCars">
+                                                        <select class="form-control" id="mycar">
                                                             <option v-for="car in list_cars" :value="car.id"
                                                                 :key="car.id">
                                                                 @{{ car.title }} </option>
@@ -505,7 +505,7 @@
                                             </div>
                                             <div class="col-6">
 
-                                                <button onclick="nextToReservation()" type="button"
+                                                <button onclick="postData()" type="button"
                                                     class="btn btn-success shadow-1" type="submit" name="valid"
                                                     style="float: left;">
                                                     تأكيد الحجز
@@ -543,7 +543,7 @@
                     phone: document.getElementById("phone").value,
                     enable_section: 0,
                     email: document.getElementById("email").value,
-                    car: document.getElementById("mySelectCars").value,
+                    car: document.getElementById("mycar").value,
                     nb_person: document.getElementById("nb_person").value,
                     nationality: document.getElementById("mySelectVillages").value,
                     residance: document.getElementById("residance").value,
