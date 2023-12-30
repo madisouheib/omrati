@@ -281,9 +281,12 @@
                                                 <label style="font-weight: bold;"> فندق مكة</label>
 
 
-                                                <select class="form-control" onchange="updateImageDataMekkah()"
+                                                <select class="form-control"
+                                                    @change="updateImageDataImage(hotelmak.file_path)"
                                                     id="mySelectMekkah">
-
+                                                    <option v-for="hotelmak in list_mekkah" :value="hotelmak.id"
+                                                        :key="hotelmak.id">
+                                                        @{{ hotelmak.title }} </option>
                                                 </select>
                                                 <i class="fas fa-hotel ms-3"></i>
                                             </div>
@@ -531,6 +534,7 @@
                 data: {
                     first_name: document.getElementById("first_name").value,
                     list_madina: {},
+                    list_mekkah: {},
                     last_name: document.getElementById("last_name").value,
                     ticket: false,
                     phone: document.getElementById("phone").value,
@@ -609,7 +613,8 @@
                     fetchDataMekkah() {
                         fetch('/api/getmadinahotels') // Replace with your API endpoint
                             .then(response => response.json())
-                            .then(data => this.populateSelect(data))
+
+                            .then(data => this.list_mekkah = data)
                             .catch(error => console.error('Error fetching data:', error));
                     },
                     fetchDataMadina() {
@@ -752,6 +757,19 @@
 
 
 
+                    },
+                    updateImageDataImage(path) {
+
+                        const baseUrl = window.location.origin;
+                        const selectElement = document.getElementById('mySelectMekkah');
+                        const imageElement = document.getElementById('imageDisplay');
+                        const selectedOption = selectElement.options[selectElement.selectedIndex];
+
+                        const imagePath = baseUrl + '/uploads/' + path;
+
+                        console.log(imagePath);
+                        // Update the image source
+                        imageElement.src = imagePath;
                     },
                     populateSelectVillages(data) {
                         const selectElementTowns = document.getElementById('mySelectVillages');
@@ -905,11 +923,14 @@
 
             }
 
-            function updateImageDataMekkah() {
+            function updateImageDataMekkah(path) {
+
+                const baseUrl = window.location.origin;
                 const selectElement = document.getElementById('mySelectMekkah');
                 const imageElement = document.getElementById('imageDisplay');
                 const selectedOption = selectElement.options[selectElement.selectedIndex];
-                const imagePath = selectedOption.getAttribute('data-image');
+
+                const imagePath = baseUrl + '/uploads/' + path;
 
                 console.log(imagePath);
                 // Update the image source
