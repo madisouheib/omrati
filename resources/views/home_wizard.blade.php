@@ -611,7 +611,7 @@
 
                     },
                     fetchDataMekkah() {
-                        fetch('/api/getmadinahotels') // Replace with your API endpoint
+                        fetch('/api/getmekkahhotels') // Replace with your API endpoint
                             .then(response => response.json())
 
                             .then(data => this.list_mekkah = data)
