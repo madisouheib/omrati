@@ -676,50 +676,7 @@
             }
         </script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Function to fetch data from the API
-                const baseUrl = window.location.origin;
 
-                console.log('hi there ');
-
-
-
-
-
-
-
-
-
-
-                // Fetch data and populate the select element
-
-
-
-            });
-
-            function updateImageDataMekkah() {
-                const selectElement = document.getElementById('mySelectMekkah');
-                const imageElement = document.getElementById('imageDisplay');
-                const selectedOption = selectElement.options[selectElement.selectedIndex];
-                const imagePath = selectedOption.getAttribute('data-image');
-
-                console.log(imagePath);
-                // Update the image source
-                imageElement.src = imagePath;
-            }
-
-            function updateImageDataMadina() {
-                const selectElement = document.getElementById('mySelectMadina');
-                const imageElement = document.getElementById('imageDisplay');
-                const selectedOption = selectElement.options[selectElement.selectedIndex];
-                const imagePath = selectedOption.getAttribute('data-image');
-
-                console.log(imagePath);
-                // Update the image source
-                imageElement.src = imagePath;
-            }
-        </script>
 
 
     </div>
