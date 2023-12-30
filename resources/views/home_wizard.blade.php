@@ -689,15 +689,15 @@
 
                     ,
                     populateSelectMadina(data) {
-                        const selectElement = document.getElementById('mySelectMadina');
+                        const mySelectMadina = document.getElementById('mySelectMadina');
 
                         // Clear existing options
-                        selectElement.innerHTML = '';
+                        mySelectMadina.innerHTML = '';
 
                         // Add a default option
                         const defaultOption = document.createElement('option');
                         defaultOption.text = 'فندق مدينة المنورة ';
-                        selectElement.add(defaultOption);
+                        mySelectMadina.add(defaultOption);
 
                         // Add options from the fetched data
                         data.forEach(item => {
@@ -707,7 +707,7 @@
                             option.setAttribute('data-image', baseUrl + '/uploads/' + item
                                 .file_path); // Assuming there is an imagePath property
 
-                            selectElement.add(option);
+                            mySelectMadina.add(option);
                         });
                     }
 
