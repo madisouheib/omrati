@@ -536,7 +536,8 @@
                     nb_person: document.getElementById("nb_person").value,
                     nationality: document.getElementById("mySelectVillages").value,
                     residance: document.getElementById("residance").value,
-
+                    hotel_mekkah: '',
+                    hotel_madina: '',
                     enableSection: true,
                     password: '',
                     nb_mekkah: document.getElementById("nbmekkahdays").value,
