@@ -131,6 +131,7 @@ class HomeController extends Controller
 
         $data = Hotel::select('bravo_hotels.*','media_files.file_path')
         ->leftJoin('media_files','media_files.id','=','bravo_hotels.image_id')
+        ->where('location_id',15)
         ->get();
 
 
@@ -145,6 +146,7 @@ return response()->json($data);
 
         $data = Hotel::select('bravo_hotels.*','media_files.file_path')
         ->leftJoin('media_files','media_files.id','=','bravo_hotels.image_id')
+        ->where('location_id',13)
         ->get();
         
         
