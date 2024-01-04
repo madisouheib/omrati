@@ -40,9 +40,26 @@
         </div>
     </div>
     <div class="g-button-submit align-self-lg-end">
-        <a href="{{ url('/registerwizard') }}"
+        <button onClick="nextPage()" type="button"
             class="btn btn-primary btn-md border-radius-3 mb-xl-0 mb-lg-1 transition-3d-hover">
-            <i class="flaticon-magnifying-glass font-size-20 mr-2"></i>{{ __('تابع') }}
-        </a>
+            {{ __('تابع') }} <i class="fa fa-arrow-left  font-size-20 mr-2"></i>
+        </button>
     </div>
 </form>
+
+
+<script>
+    function nextPage() {
+
+        var startDate = document.getElementById("start").value;
+
+        var formattedDateBegin = startDate.replace(/\//g, "-");
+        var endDate = document.getElementById("end").value;
+        var formattedDateEnd = endDate.replace(/\//g, "-");
+
+        window.location.href = "/registerwizard/" + formattedDateBegin + "/" + formattedDateEnd;
+
+
+
+    }
+</script>
