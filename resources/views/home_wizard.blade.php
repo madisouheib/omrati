@@ -274,10 +274,13 @@
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> تاريخ البداية</label>
-                                                    <input type="hidden" value="" id="date_bd" v-model="date_b"
-                                                        class="form-control ps-5" placeholder="تاريخ البداية" />
-                                                    <input type="date" name="date_b" value="" id="date_b"
-                                                        v-model="date_b" class="form-control ps-5"
+                                                    <input type="hidden"
+                                                        value="{{ \Carbon\Carbon::parse(Request::segment(2))->format('Y-m-d') }}"
+                                                        id="date_bd" v-model="date_b" class="form-control ps-5"
+                                                        placeholder="تاريخ البداية" />
+                                                    <input type="date" name="date_b"
+                                                        value="{{ \Carbon\Carbon::parse(Request::segment(2))->format('Y-m-d') }}"
+                                                        id="date_b" v-model="date_b" class="form-control ps-5"
                                                         placeholder="تاريخ البداية" />
 
                                                 </div>
@@ -286,12 +289,10 @@
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> تاريخ الانتهاء</label>
-                                                    <input type="hidden" name="date_e" v-model="date_e"
-                                                        value="{{ \Carbon\Carbon::parse(Request::segment(3))->format('Y-m-d') }}"
+                                                    <input type="hidden" name="date_e" v-model="date_e" value=""
                                                         id="date_eb" class="form-control ps-5"
                                                         placeholder="تاريخ الانتهاء" />
-                                                    <input type="date" name="date_e" v-model="date_e"
-                                                        value="{{ \Carbon\Carbon::parse(Request::segment(3))->format('Y-m-d') }}"
+                                                    <input type="date" name="date_e" v-model="date_e" value=""
                                                         id="date_e" class="form-control ps-5"
                                                         placeholder="تاريخ الانتهاء" />
 
