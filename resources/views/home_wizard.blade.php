@@ -279,7 +279,7 @@
                                                         id="date_bd" v-model="date_b" class="form-control ps-5"
                                                         placeholder="تاريخ البداية" />
                                                     <input type="date" name="date_b"
-                                                        value="{{ \Carbon\Carbon::parse(Request::segment(3))->format('Y-m-d') }}"
+                                                        value="{{ \Carbon\Carbon::parse(Request::segment(2))->format('Y-m-d') }}"
                                                         id="date_b" v-model="date_b" class="form-control ps-5"
                                                         placeholder="تاريخ البداية" />
 
