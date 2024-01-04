@@ -385,8 +385,13 @@
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> الجنسية</label>
-                                                    <select class="form-control" id="mySelectVillages">
+                                                    <select class="form-control" id="mySelectVillages"
+                                                        v-model="nationality">
 
+
+                                                        <option v-for="national in nationalies" :value="national.id"
+                                                            :key="national.id">
+                                                            @{{ national.title }} </option>
                                                     </select>
 
 
@@ -821,6 +826,7 @@
                     list_madina: {},
                     list_mazart: {},
                     list_nusuk: {},
+                    nationalies: {},
                     showPersonalReservation: false,
                     showPersonalData: true,
                     showHotel: false,
@@ -850,7 +856,7 @@
                     email: "",
                     car: document.getElementById("mycar").value,
                     nb_person: 1,
-                    nationality: document.getElementById("mySelectVillages").value,
+                    nationality: "",
                     residance: document.getElementById("residance").value,
                     hotel_mekkah: '',
                     hotel_madina: '',
@@ -867,7 +873,7 @@
 
                     this.fetchDataMekkah();
                     this.fetchDataMadina();
-                    //     this.fetchDataVisas();
+                    this.fetchDataVisas();
                     this.fetchDataVillages();
                     this.fetchDataCars();
                     this.fetchDataMazarat();
@@ -1108,7 +1114,7 @@
                     fetchDataVillages() {
                         fetch('/api/getvillages') // Replace with your API endpoint
                             .then(response => response.json())
-                            .then(data => this.populateSelectVillages(data))
+                            .then(data => this.nationalies = data)
                             .catch(error => console.error('Error fetching data:', error));
                     },
                     // Function to populate the select element with data
