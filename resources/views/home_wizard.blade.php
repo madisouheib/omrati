@@ -391,7 +391,7 @@
 
                                                         <option v-for="national in nationalies" :value="national.id"
                                                             :key="national.id">
-                                                            @{{ national.title }} </option>
+                                                            @{{ national.name }} </option>
                                                     </select>
 
 
@@ -446,6 +446,11 @@
                                                     <select name="country" v-model="ticket" id="mySelectVisas"
                                                         class="form-control">
 
+
+
+                                                        <option v-for="visa in list_visas" :value="visa.id"
+                                                            :key="visa.id">
+                                                            @{{ visa.title }} </option>
                                                     </select>
                                                     <i class="fas fa-plane ms-3"></i>
                                                 </div>
@@ -840,6 +845,7 @@
                     list_mekkah: {},
                     dateDifference: 0,
                     list_cars: {},
+                    list_visas: {},
                     error_messages: [],
 
                     passport_datee: "",
@@ -1102,7 +1108,7 @@
                     fetchDataVisas() {
                         fetch('/api/getvisastypes') // Replace with your API endpoint
                             .then(response => response.json())
-                            .then(data => this.populateSelectVisas(data))
+                            .then(data => this.list_visas = data)
                             .catch(error => console.error('Error fetching data:', error));
                     },
                     fetchDataCars() {
