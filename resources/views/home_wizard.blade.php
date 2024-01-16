@@ -270,16 +270,25 @@
                                                     @{{ error }}
                                                 </div>
                                             </div>
+                                            @php
+                                                $dateValueDeb = '';
+                                                if (Request::segment(2)) {
+                                                    $dateValueDeb = \Carbon\Carbon::parse(Request::segment(2))->format('Y-m-d');
+                                                }
+
+                                                $dateValueEnd = '';
+                                                if (Request::segment(3)) {
+                                                    $dateValueEnd = \Carbon\Carbon::parse(Request::segment(2))->format('Y-m-d');
+                                                }
+                                            @endphp
 
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> تاريخ البداية</label>
-                                                    <input type="hidden"
-                                                        value="{{ \Carbon\Carbon::parse(Request::segment(2))->format('Y-m-d') }}"
-                                                        id="date_bd" v-model="date_b" class="form-control ps-5"
+                                                    <input type="hidden" value="{{ $dateValueDeb }}" id="date_bd"
+                                                        v-model="date_b" class="form-control ps-5"
                                                         placeholder="تاريخ البداية" />
-                                                    <input type="date" name="date_b"
-                                                        value="{{ \Carbon\Carbon::parse(Request::segment(2))->format('Y-m-d') }}"
+                                                    <input type="date" name="date_b" value="{{ $dateValueEnd }}"
                                                         id="date_b" v-model="date_b" class="form-control ps-5"
                                                         placeholder="تاريخ البداية" />
 
