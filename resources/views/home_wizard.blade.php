@@ -272,15 +272,26 @@
                                             </div>
                                             @php
                                                 $dateValueDeb = '';
+
                                                 if (Request::segment(2)) {
-                                                    $dateValueDeb = \Carbon\Carbon::parse(Request::segment(2))->format('Y-m-d');
+                                                    try {
+                                                        $dateValueDeb = \Carbon\Carbon::createFromFormat('m-d-Y', Request::segment(2))->format('Y-m-d');
+                                                    } catch (\Exception $e) {
+                                                        // Handle the exception if the date is invalid
+                                                    }
                                                 }
 
                                                 $dateValueEnd = '';
+
                                                 if (Request::segment(3)) {
-                                                    $dateValueEnd = \Carbon\Carbon::parse(Request::segment(2))->format('Y-m-d');
+                                                    try {
+                                                        $dateValueEnd = \Carbon\Carbon::createFromFormat('m-d-Y', Request::segment(3))->format('Y-m-d');
+                                                    } catch (\Exception $e) {
+                                                        // Handle the exception if the date is invalid
+                                                    }
                                                 }
                                             @endphp
+
 
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
@@ -298,12 +309,12 @@
                                             <div class="col-md-6 col-xs-6 col-lg-6 mt-4">
                                                 <div class="form-outline">
                                                     <label style="font-weight: bold;"> تاريخ الانتهاء</label>
-                                                    <input type="hidden" name="date_e" v-model="date_e" value=""
-                                                        id="date_eb" class="form-control ps-5"
-                                                        placeholder="تاريخ الانتهاء" />
-                                                    <input type="date" name="date_e" v-model="date_e" value=""
-                                                        id="date_e" class="form-control ps-5"
-                                                        placeholder="تاريخ الانتهاء" />
+                                                    <input type="hidden" value="{{ $dateValueEnd }}" name="date_e"
+                                                        v-model="date_e" value="" id="date_eb"
+                                                        class="form-control ps-5" placeholder="تاريخ الانتهاء" />
+                                                    <input type="date" value="{{ $dateValueEnd }}" name="date_e"
+                                                        v-model="date_e" value="" id="date_e"
+                                                        class="form-control ps-5" placeholder="تاريخ الانتهاء" />
 
                                                 </div>
                                             </div>
