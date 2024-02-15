@@ -1104,7 +1104,7 @@
                             nb_mekkah: document.getElementById("nbmekkahdays").value
                         }
 
-
+                        this.nextToFinale();
                         //var sectionReservationData = document.getElementById("personal-success");
                         //var sectionPersonalUmrah = document.getElementById("personal-revision");
                         //sectionPersonalUmrah.style.display = "none";
