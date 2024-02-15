@@ -273,9 +273,9 @@
                                             @php
                                                 $dateValueDeb = '';
 
-                                                if (Request::segment(1)) {
+                                                if (Request::segment(2)) {
                                                     try {
-                                                        $dateValueDeb = \Carbon\Carbon::createFromFormat('m-d-Y', Request::segment(1))->format('Y-m-d');
+                                                        $dateValueDeb = \Carbon\Carbon::createFromFormat('m-d-Y', Request::segment(2))->format('Y-m-d');
                                                     } catch (\Exception $e) {
                                                         // Handle the exception if the date is invalid
                                                     }
@@ -283,9 +283,9 @@
 
                                                 $dateValueEnd = '';
 
-                                                if (Request::segment(2)) {
+                                                if (Request::segment(3)) {
                                                     try {
-                                                        $dateValueEnd = \Carbon\Carbon::createFromFormat('m-d-Y', Request::segment(2))->format('Y-m-d');
+                                                        $dateValueEnd = \Carbon\Carbon::createFromFormat('m-d-Y', Request::segment(3))->format('Y-m-d');
                                                     } catch (\Exception $e) {
                                                         // Handle the exception if the date is invalid
                                                     }
