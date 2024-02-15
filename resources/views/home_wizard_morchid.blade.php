@@ -251,15 +251,10 @@
                                                     <label style="font-weight: bold;">
                                                         مرشد لاداء مناسك
                                                     </label>
-                                                    <select class="form-control" v-model="nusuk">
-                                                        <option value="0">
-                                                            لا أريد
-                                                        </option>
-                                                        <option v-for="nusuki in list_nusuk" :value="nusuki.id"
-                                                            :key="nusuki.id">
-                                                            @{{ nusuki.title }} </option>
-
-
+                                                    <select class="form-control" id="mycar" v-model="nusuki">
+                                                        <option v-for="nusuk in list_nusuk" :value="nusuk.id"
+                                                            :key="nusuk.id">
+                                                            @{{ nusuk.title }} </option>
                                                     </select>
                                                     <i class="fas fa-users-rays ms-3"></i>
 
@@ -500,6 +495,7 @@
                     first_name: '',
                     last_name: '',
                     list_nusuk: {},
+                    nusuki: '',
                     nusuk: '',
                     list_mazart: {},
                     mazaret: '',

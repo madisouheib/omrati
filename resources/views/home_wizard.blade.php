@@ -828,6 +828,40 @@
                                         </div>
                                     </section>
                                 </section>
+
+
+
+
+                                <section id="approved-revision" v-if="finaleSection == true ">
+                                    <h3> مراجعة عامة </h3>
+                                    <div class="col-md-12 col-xs-12 col-lg-12 mt-4">
+
+                                        <img class="mt-2" src="{{ url('images/check-out.png') }}"
+                                            style="display: block;height:100px;width:100px;margin:auto;" />
+                                    </div>
+
+                                    <h4 class="text-center mt-2"> يتم معالجة طلبكم و التواصل معكم في أقل من 48 ساعة</h4>
+                                    <div class="invoice">
+
+
+
+
+                                    </div>
+
+
+
+
+
+
+
+                                    <section id="panel-switch mt-4" style="margin-top:3%;">
+
+                                    </section>
+                                </section>
+
+
+
+
                                 </form>
 
 
@@ -857,6 +891,7 @@
                     days_stay: false,
                     check_visit: false,
                     showRevision: false,
+                    finaleSection: false,
                     nb_rest: 0,
                     date_b: document.getElementById("date_bd").value,
                     date_e: document.getElementById("date_eb").value,
@@ -933,6 +968,12 @@
 
                         this.showRevision = !this.showRevision;
                         this.showPlus = !this.showPlus;
+                    },
+                    nextToFinale() {
+
+
+                        this.finaleSection = !this.finaleSection;
+                        this.showRevision = !this.showRevision;
                     },
                     nextToPlus() {
 
@@ -1062,6 +1103,8 @@
                             nb_madina: document.getElementById("nb_madina").value,
                             nb_mekkah: document.getElementById("nbmekkahdays").value
                         }
+
+
                         //var sectionReservationData = document.getElementById("personal-success");
                         //var sectionPersonalUmrah = document.getElementById("personal-revision");
                         //sectionPersonalUmrah.style.display = "none";
