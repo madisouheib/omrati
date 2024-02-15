@@ -920,7 +920,7 @@
 
                         } else {
                             this.days_stay = true;
-                            this.nb_rest = this.nb_rest - value;
+                            this.nb_rest = this.nb_rest - 1;
 
                             console.log()
 
