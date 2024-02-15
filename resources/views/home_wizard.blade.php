@@ -911,7 +911,7 @@
                         var totalDays = parseInt(this.nb_madina) + parseInt(this.nb_mekkah)
                         if (totalDays > parseInt(this.dateDifference)) {
                             this.error_messages = [];
-                            var nb_rest = parseInt(this.nb_madina + this.nb_mekkah) - parseInt(this.dateDifference);
+                            var nb_rest = parseInt(this.dateDifference) - parseInt(this.nb_madina + this.nb_mekkah);
 
 
                             this.error_messages.push('  الحد الاقصى للايام هو ' + this.dateDifference);
@@ -982,8 +982,8 @@
                     nextToReservation() {
                         console.log('hi tehre ');
                         this.error_messages = [];
-                        const start = new Date(this.date_b);
-                        const end = new Date(this.date_e);
+                        const start = new Date(this.date_e);
+                        const end = new Date(this.date_b);
 
                         // Calculate the difference in milliseconds
                         const differenceInMilliseconds = end.getTime() - start.getTime();
