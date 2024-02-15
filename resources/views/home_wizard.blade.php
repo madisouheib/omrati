@@ -982,13 +982,8 @@
                     nextToReservation() {
                         console.log('hi tehre ');
                         this.error_messages = [];
-                        // Assuming date_b and date_e are in the format "day / month / year"
-                        const startDateParts = this.date_b.split('/').map(part => parseInt(part));
-                        const endDateParts = this.date_e.split('/').map(part => parseInt(part));
-
-                        // Construct Date objects using the parsed parts
-                        const start = new Date(startDateParts[2], startDateParts[1] - 1, startDateParts[0]);
-                        const end = new Date(endDateParts[2], endDateParts[1] - 1, endDateParts[0]);
+                        const start = new Date(this.date_b);
+                        const end = new Date(this.date_e);
 
                         // Calculate the difference in milliseconds
                         const differenceInMilliseconds = end.getTime() - start.getTime();
