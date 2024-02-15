@@ -1084,16 +1084,16 @@
                     },
                     postData() {
 
-
+                        this.nextToFinale();
                         const postData = {
-                            last_name: document.getElementById("last_name").value,
-                            first_name: document.getElementById("first_name").value,
-                            phone: document.getElementById("phone").value,
-                            email: document.getElementById("email").value,
+                            last_name: this.last_name,
+                            first_name: this.first_name,
+                            phone: this.phone,
+                            email: this.email,
 
-                            nationality: document.getElementById("mySelectVillages").value,
-                            nb_person: document.getElementById("nb_person").value,
-                            car: document.getElementById("mycar").value,
+                            nationality: this.nationality,
+                            nb_person: this.nb_person,
+                            car: this.car,
 
                             hotel_madina: document.getElementById("mySelectMadina").value,
                             hotel_mekkah: document.getElementById("mySelectMekkah").value,
@@ -1104,7 +1104,7 @@
                             nb_mekkah: document.getElementById("nbmekkahdays").value
                         }
 
-                        this.nextToFinale();
+
                         //var sectionReservationData = document.getElementById("personal-success");
                         //var sectionPersonalUmrah = document.getElementById("personal-revision");
                         //sectionPersonalUmrah.style.display = "none";
