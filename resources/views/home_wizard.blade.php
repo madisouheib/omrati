@@ -567,9 +567,7 @@
 
                                             </div>
                                         </div>
-                                        <img id="imageDisplay"
-                                            style="display: block; width:500px;height:500px;margin-top:2%; margin-left:auto;margin-right:auto;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
-                                            src="" alt="Selected Image">
+
                                     </div>
                                     <section id="panel-switch mt-4" style="margin-top:3%;">
                                         <div class="row mt-2">
@@ -787,13 +785,13 @@
                                                 <tr class="item last font-ibx">
                                                     <td class="font-ibx">خدمة حجز الفندق</td>
 
-                                                    <td>$1000.00</td>
+                                                    <td>$190.00</td>
                                                 </tr>
 
                                                 <tr class="total">
                                                     <td></td>
 
-                                                    <td class="font-ibx">المجموع: $385.00</td>
+                                                    <td class="font-ibx">المجموع: $685.00</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -836,7 +834,8 @@
                                     <h3> مراجعة عامة </h3>
                                     <div class="col-md-12 col-xs-12 col-lg-12 mt-4">
 
-                                        <img class="mt-2" src="{{ url('images/check-out.png') }}"
+                                        <img class="mt-2" style="height: 200px;width:200px;"
+                                            src="{{ url('images/umrah-finale.png') }}"
                                             style="display: block;height:100px;width:100px;margin:auto;" />
                                     </div>
 
